@@ -1,6 +1,8 @@
 import streamlit as st
 
-# Konfiguracja strony na szeroką, aby zmieścić dwie kolumny
+# logika backendowa
+from core.llm_engine import get_standard_llm_response
+
 st.set_page_config(layout="wide", page_title="GraphRAG vs LLM Chatbot")
 
 st.title("Ekspercki Chatbot: Porównanie RAG Grafowy vs Standardowy LLM")
@@ -53,11 +55,11 @@ if prompt:
     # Symulacja generowania odpowiedzi dla Standardowego LLM
     with col1:
         with st.chat_message("assistant"):
-            placeholder_llm = st.empty()
-            # Zaślepka
-            with st.spinner("Generowanie odpowiedzi LLM..."):
-                response_llm = f"**Brak dostępu do kontekstu grafu.**\n\nOdpowiedź na zapytanie: '{prompt}'."
-                placeholder_llm.markdown(response_llm)
+            with st.spinner("Generowanie odpowiedzi w LM Studio..."):
+                # Wywołanie odseparowanej funkcji z core/llm_engine.py
+                response_llm = get_standard_llm_response(prompt)
+
+                st.markdown(response_llm)
                 st.session_state.messages_llm.append({"role": "assistant", "content": response_llm})
 
     # Symulacja generowania odpowiedzi dla Graph RAG
