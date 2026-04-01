@@ -13,7 +13,7 @@ def get_graph_store():
             username=os.getenv("NEO4J_USERNAME"),
             password=os.getenv("NEO4J_PASSWORD"),
             url=os.getenv("NEO4J_URI"),
-            database="neo4j"
+            database="praca"
         )
         return graph_store
     except Exception as e:
@@ -63,7 +63,7 @@ def get_graph_rag_response(prompt: str) -> str:
         if not str(response) or "Empty Response" in str(response):
             return "**Brak powiązań w grafie dla tego zapytania.**"
 
-        return f"**[Odpowiedź z Grafu Neo4j]**\n\n{str(response)}"
+        return f"**Odpowiedź z Grafu Neo4j**\n\n{str(response)}"
 
     except Exception as e:
         return f"**[Błąd silnika RAG]** Szczegóły: {e}"
