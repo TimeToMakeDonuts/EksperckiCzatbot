@@ -11,7 +11,7 @@ def setup_llm_environment():
         model="google/gemma-3-27b",
         is_chat_model=True,
         temperature=0.1,
-        max_tokens=500,
+        max_tokens=2000,
         timeout = 300.0,
     )
 
@@ -24,9 +24,7 @@ def setup_llm_environment():
 
     return local_llm
 
-
 llm = setup_llm_environment()
-
 
 def get_standard_llm_response(prompt: str) -> str:
     # Funkcja odpytująca standardowy model LLM (bez kontekstu RAG).
