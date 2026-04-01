@@ -2,6 +2,7 @@ import streamlit as st
 
 # logika backendowa
 from core.llm_engine import get_standard_llm_response
+from core.graph_rag import get_graph_rag_response
 
 st.set_page_config(layout="wide", page_title="GraphRAG vs LLM Chatbot")
 
@@ -66,10 +67,11 @@ if prompt:
     with col2:
         with st.chat_message("assistant"):
             placeholder_rag = st.empty()
-            # Zaślepka
+            # Wywołanie odseparowanej funkcji z core/graph_rag.py
             with st.spinner("Przeszukiwanie grafu i generowanie odpowiedzi..."):
-                response_rag = f"**Wykorzystano kontekst z Grafu Wiedzy.**\n\nZnaleziono encje powiązane z zapytaniem: '{prompt}'."
-                placeholder_rag.markdown(response_rag)
+                response_rag = get_graph_rag_response(prompt)
+
+                st.markdown(response_rag)
                 st.session_state.messages_rag.append({"role": "assistant", "content": response_rag})
 
     # Wymuszenie odświeżenia, aby scroll zjechał na dół
