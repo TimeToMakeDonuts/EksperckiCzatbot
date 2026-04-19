@@ -128,7 +128,7 @@ with tab1:
             st.caption("Analiza ostatniej odpowiedzi RAG")
             score = st.session_state.latest_metric
             color = "green" if score > 80 else "orange" if score > 50 else "red"
-            st.markdown(f"**Metryka Truthfulness (Wierność źródłom):** :{color}[**{score}%**]")
+            st.markdown(f"**Metryka Faithfulness (Wierność źródłom):** :{color}[**{score}%**]")
             st.progress(score / 100.0)
 
         # Wyświetlanie wizualizacji grafu
