@@ -6,14 +6,61 @@ import re
 import tempfile
 from pyvis.network import Network
 from neo4j import GraphDatabase
+from dotenv import load_dotenv
+
+# Wczytanie domyślnych zmiennych środowiskowych z pliku .env na starcie
+load_dotenv()
 
 # logika backendowa
-from core.llm_engine import get_standard_llm_response, llm
+from core.llm_engine import get_standard_llm_response, llm, init_or_update_llm
 from core.graph_rag import get_graph_rag_response
 from core.graph_builder import extract_text_from_pdf, extract_triplets_with_llm, save_edited_triplets_to_neo4j
 
 st.set_page_config(layout="wide", page_title="GraphRAG vs LLM Chatbot")
 st.title("System Ekspercki: RAG Grafowy")
+
+#USTAWIENIA I ZABEZPIECZENIA
+
+with st.sidebar:
+    st.header("Ustawienia Systemu")
+
+    st.subheader("Model Językowy (LLM)")
+    # Używamy st.session_state do pamiętania wartości przy przeładowaniach
+    api_base = st.text_input("Adres API", value=st.session_state.get("api_base", "http://localhost:1234/v1"))
+    api_key = st.text_input("Klucz API", type="password", value=st.session_state.get("api_key", "lm-studio"))
+    model_name = st.text_input("Nazwa Modelu", value=st.session_state.get("model_name", "google/gemma-3-27b"))
+
+    temperature = st.slider("Kreatywność (Temperature)", 0.0, 1.0, st.session_state.get("temp", 0.1), 0.1)
+    max_tokens = st.number_input("Limit tokenów", 100, 4000, st.session_state.get("max_tokens", 512), step=100)
+
+    st.subheader("Baza Grafowa")
+    neo4j_uri = st.text_input("Adres URI",
+                              value=st.session_state.get("neo_uri", os.getenv("NEO4J_URI", "bolt://localhost:7687")))
+    neo4j_user = st.text_input("Użytkownik",
+                               value=st.session_state.get("neo_user", os.getenv("NEO4J_USERNAME", "neo4j")))
+    neo4j_pass = st.text_input("Hasło do bazy", type="password",
+                               value=st.session_state.get("neo_pass", os.getenv("NEO4J_PASSWORD", "")))
+
+    if st.button("Zapisz i zastosuj ustawienia", type="primary"):
+        #Zapis do stanu sesji
+        st.session_state.api_base = api_base
+        st.session_state.api_key = api_key
+        st.session_state.model_name = model_name
+        st.session_state.temp = temperature
+        st.session_state.max_tokens = max_tokens
+        st.session_state.neo_uri = neo4j_uri
+        st.session_state.neo_user = neo4j_user
+        st.session_state.neo_pass = neo4j_pass
+
+        #Nadpisanie zmiennych środowiskowych procesu
+        os.environ["NEO4J_URI"] = neo4j_uri
+        os.environ["NEO4J_USERNAME"] = neo4j_user
+        os.environ["NEO4J_PASSWORD"] = neo4j_pass
+
+        #Zrestartowanie silnika LLM z nowymi parametrami
+        init_or_update_llm(api_base, api_key, model_name, temperature, max_tokens)
+        st.success("Zaaktualizowano konifguracje")
+
 
 # FUNKCJE WIZUALIZACJI I METRYK
 
