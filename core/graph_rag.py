@@ -28,7 +28,7 @@ def is_graph_empty(graph_store) -> bool:
         return True
 
     # funkcja realizująca architekturę Graph RAG.
-def get_graph_rag_response(prompt: str) -> str:
+def get_graph_rag_response(prompt: str) -> str | dict[str, str]:
     graph_store = get_graph_store()
 
     if not graph_store:
@@ -63,7 +63,12 @@ def get_graph_rag_response(prompt: str) -> str:
         if not str(response) or "Empty Response" in str(response):
             return "**Brak powiązań w grafie dla tego zapytania.**"
 
-        return f"**Odpowiedź z Grafu Neo4j**\n\n{str(response)}"
+        raw_context = "\n".join([node.node.text for node in response.source_nodes])
+
+        return {
+            "answer": f"**Odpowiedź z Grafu Neo4j**\n\n{str(response)}",
+            "context": raw_context
+        }
 
     except Exception as e:
         return f"**[Błąd silnika RAG]** Szczegóły: {e}"
