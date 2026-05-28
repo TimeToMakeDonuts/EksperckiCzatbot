@@ -31,7 +31,10 @@ def init_or_update_llm(api_base="http://localhost:1234/v1", api_key="lm-studio",
     return llm
 
 # Pierwsze uruchomienie przy starcie aplikacji (domyślne wartości)
-init_or_update_llm()
+try:
+    init_or_update_llm()
+except Exception:
+    pass
 
 def get_standard_llm_response(prompt: str) -> str:
     # Funkcja odpytująca standardowy model LLM (bez kontekstu RAG).

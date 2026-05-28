@@ -65,28 +65,26 @@ with st.sidebar:
 # FUNKCJE WIZUALIZACJI I METRYK
 
 # Odpytanie Neo4j i utworzenie grafu
-def get_visual_graph_html(prompt_text):
-
+def get_visual_graph_html():
     uri = os.getenv("NEO4J_URI")
     user = os.getenv("NEO4J_USERNAME")
     password = os.getenv("NEO4J_PASSWORD")
+    db_name = os.getenv("NEO4J_DATABASE", "praca")
 
     try:
         driver = GraphDatabase.driver(uri, auth=(user, password))
 
-        # Pobieramy 30 relacji z bazy (możliwe do zmiany sposób - testowanie)
         query = """
         MATCH (n)-[r]->(m)
         RETURN n.id AS source, type(r) AS rel, m.id AS target
         LIMIT 30
         """
-        with driver.session(database="praca") as session:
+        with driver.session(database=db_name) as session:
             records = list(session.run(query))
 
         if not records:
             return None
 
-        # Rysowanie interaktywnego grafu w PyVis
         net = Network(height="350px", width="100%", bgcolor="#0e1117", font_color="white", directed=True)
         for record in records:
             src, rel, tgt = str(record["source"]), str(record["rel"]), str(record["target"])
@@ -96,20 +94,19 @@ def get_visual_graph_html(prompt_text):
 
         net.toggle_physics(True)
 
-        # Zapisz i odczytaj HTML
-        path = tempfile.mktemp(suffix=".html")
-        net.save_graph(path)
-        with open(path, "r", encoding="utf-8") as f:
+        tmp_fd, tmp_path = tempfile.mkstemp(suffix=".html")
+        os.close(tmp_fd)
+        net.save_graph(tmp_path)
+        with open(tmp_path, "r", encoding="utf-8") as f:
             html = f.read()
+        os.unlink(tmp_path)
         return html
     except Exception as e:
         return f"<p style='color:red;'>Błąd wizualizacji grafu: {e}</p>"
 
-    #Ocena wierność odpowiedzi względem faktów z grafu.
 def calculate_faithfulness(generated_answer, context):
-
     if not context.strip():
-        return 0
+        return None
 
     prompt = f"""
     Jako obiektywny sędzia AI, oceń WIERNOŚĆ (faithfulness) poniższej odpowiedzi względem faktów.
@@ -119,7 +116,7 @@ def calculate_faithfulness(generated_answer, context):
     Odpowiedź do oceny:
     {generated_answer}
 
-    W jakim stopniu (od 0 do 100) wygenerowana odpowiedź bazuje WYŁĄCZNIE na podanych faktach? 
+    W jakim stopniu (od 0 do 100) wygenerowana odpowiedź bazuje WYŁĄCZNIE na podanych faktach?
     Zwróć TYLKO LICZBĘ (np. 100). Nie pisz żadnego innego tekstu.
     """
     try:
@@ -128,9 +125,9 @@ def calculate_faithfulness(generated_answer, context):
         if match:
             score = int(match.group())
             return min(max(score, 0), 100)
-        return 100
-    except:
-        return 100
+        return None
+    except Exception:
+        return None
 
 
 # Inicjalizacja stanu sesji (przechowywanie historii czatu) - definiujemy to globalnie na starcie
@@ -229,7 +226,7 @@ with tab1:
 
                 # Generowanie Wizualizacji PyVis
                 with st.spinner("Renderowanie interaktywnego grafu..."):
-                    html_graph = get_visual_graph_html(prompt)
+                    html_graph = get_visual_graph_html()
                     if html_graph:
                         st.session_state.latest_graph_html = html_graph
 

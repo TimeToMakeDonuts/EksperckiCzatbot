@@ -55,15 +55,21 @@ def save_edited_triplets_to_neo4j(dataframe):
     password = os.getenv("NEO4J_PASSWORD")
 
     try:
+        db_name = os.getenv("NEO4J_DATABASE", "praca")
         with GraphDatabase.driver(uri, auth=(user, password)) as driver:
-            with driver.session(database="praca") as session:
+            with driver.session(database=db_name) as session:
                 for index, row in dataframe.iterrows():
-                    n1 = row["Obiekt 1 (Start)"]
-                    rel = row["Relacja"]
-                    n2 = row["Obiekt 2 (Koniec)"]
+                    n1 = str(row["Obiekt 1 (Start)"]).strip()
+                    rel = str(row["Relacja"]).strip()
+                    n2 = str(row["Obiekt 2 (Koniec)"]).strip()
+
+                    if not n1 or not rel or not n2:
+                        continue
 
                     # Wyczyszczenie nazw relacji ze znaków specjalnych
                     rel_clean = re.sub(r'\W+', '', rel)
+                    if not rel_clean:
+                        continue
 
                     # Zapytanie Cypher
                     query = f"""
