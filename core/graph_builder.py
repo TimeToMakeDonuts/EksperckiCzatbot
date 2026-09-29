@@ -1,24 +1,32 @@
 import os
 import re
+import pandas as pd
 from PyPDF2 import PdfReader
 from neo4j import GraphDatabase
-from core.llm_engine import llm
+from core import llm_engine
+from core.logger import get_logger
 
-#Wyciągnięcie tekstu z pliku PDF.
+logger = get_logger(__name__)
+
+
 def extract_text_from_pdf(uploaded_file) -> str:
+    # Czyta wgrany plik PDF i zwraca cały jego tekst (ze wszystkich stron)
+    # jako jeden ciąg znaków. Tabele i układ strony nie są zachowywane.
     reader = PdfReader(uploaded_file)
     text = ""
     for page in reader.pages:
-        text += page.extract_text() + "\n"
+        text += (page.extract_text() or "") + "\n"  # strona-skan bez tekstu zwraca None
     return text
 
 
 def extract_triplets_with_llm(text: str) -> list:
-
-    # Prompt wymuszujący na LLM określony format.
+    # Prosi model LLM o wyciągnięcie z tekstu relacji w formacie
+    # "Węzeł 1 | Relacja | Węzeł 2" i zamienia odpowiedź na listę słowników.
+    # Każdy słownik to jeden wiersz tabeli edycji w zakładce "Baza Wiedzy" (st.data_editor).
+    # Przy błędzie modelu zwraca pustą listę.
     prompt = f"""
-    Jesteś analitykiem danych grafowych. Z poniższego tekstu wyciągnij najważniejsze 
-    relacje między encjami. 
+    Jesteś analitykiem danych grafowych. Z poniższego tekstu wyciągnij najważniejsze
+    relacje między encjami.
     Musisz zwrócić wynik DOKŁADNIE w formacie: Węzeł 1 | Relacja | Węzeł 2
 
     Przykład:
@@ -29,11 +37,9 @@ def extract_triplets_with_llm(text: str) -> list:
 
     Wypisz tylko relacje linijka po linijce, bez żadnego innego tekstu wstępnego:
     """
-
     try:
-        response = llm.complete(prompt).text
-
-        # Parsowanie odpowiedzi od LLM
+        response = llm_engine.llm.complete(prompt).text
+        # Parsuj odpowiedź LLM: każda linia z separatorem | to jedna trójka
         triplets = []
         for line in response.split('\n'):
             parts = line.split('|')
@@ -44,41 +50,42 @@ def extract_triplets_with_llm(text: str) -> list:
                     "Obiekt 2 (Koniec)": parts[2].strip()
                 })
         return triplets
-    except Exception as e:
-        print(f"Błąd ekstrakcji: {e}")
+    except Exception:
+        logger.error("Błąd ekstrakcji trójek z tekstu przez LLM", exc_info=False)  # exc_info=False: pełny ślad błędu mógłby ujawnić treść promptu
         return []
 
-# Zapis tabeli Pandas DataFrame do bazy Neo4j.
+
 def save_edited_triplets_to_neo4j(dataframe):
+    # Zapisuje trójki zatwierdzone przez użytkownika w tabeli do bazy Neo4j.
+    # Używa MERGE, więc jeśli węzeł lub relacja już istnieją, nie powstają duplikaty.
+    # Zwraca True, gdy zapis się udał, a False, gdy wystąpił błąd (np. brak połączenia).
     uri = os.getenv("NEO4J_URI")
     user = os.getenv("NEO4J_USERNAME")
     password = os.getenv("NEO4J_PASSWORD")
-
     try:
         db_name = os.getenv("NEO4J_DATABASE", "praca")
         with GraphDatabase.driver(uri, auth=(user, password)) as driver:
             with driver.session(database=db_name) as session:
-                for index, row in dataframe.iterrows():
-                    n1 = str(row["Obiekt 1 (Start)"]).strip()
-                    rel = str(row["Relacja"]).strip()
-                    n2 = str(row["Obiekt 2 (Koniec)"]).strip()
-
+                for _, row in dataframe.iterrows():
+                    # puste komórki z tabeli edycji to None/NaN, nie wolno zamienić ich na tekst "None"
+                    n1, rel, n2 = (
+                        "" if pd.isna(row[col]) else str(row[col]).strip()
+                        for col in ("Obiekt 1 (Start)", "Relacja", "Obiekt 2 (Koniec)")
+                    )
                     if not n1 or not rel or not n2:
                         continue
-
-                    # Wyczyszczenie nazw relacji ze znaków specjalnych
+                    # Usuń znaki specjalne z nazwy relacji (zostają litery, cyfry i _). Backticki w zapytaniu
+                    # pozwalają użyć nazwy zaczynającej się od cyfry, np. "2019_ROK"
                     rel_clean = re.sub(r'\W+', '', rel)
                     if not rel_clean:
                         continue
-
-                    # Zapytanie Cypher
                     query = f"""
                     MERGE (a:Entity {{id: $n1}})
                     MERGE (b:Entity {{id: $n2}})
-                    MERGE (a)-[:{rel_clean}]->(b)
+                    MERGE (a)-[:`{rel_clean}`]->(b)
                     """
                     session.run(query, n1=n1, n2=n2)
         return True
-    except Exception as e:
-        print(f"Błąd zapisu do Neo4j: {e}")
+    except Exception:
+        logger.error("Błąd zapisu trójek do Neo4j", exc_info=False)  # exc_info=False: pełny ślad błędu mógłby ujawnić dane połączenia z bazą
         return False

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "question": "Kiedy i gdzie została założona firma Zorbex S.A.?",
+    "ground_truth": "Zorbex S.A. została założona w 2019 roku. Siedziba firmy mieści się przy ul. Mieszka I 17, 62-200 Gniezno.",
+    "category": "ogólne"
+  },
+  {
+    "id": 2,
+    "question": "Kto jest obecnym Prezesem Zarządu Zorbex S.A. i od kiedy pełni tę funkcję?",
+    "ground_truth": "Prezesem Zarządu (CEO) Zorbex S.A. jest Marta Klejnot-Wasiak, która piastuje to stanowisko od 2021 roku. Wcześniej firmą kierował Henryk Dłubak (2019–2021).",
+    "category": "zarząd"
+  },
+  {
+    "id": 3,
+    "question": "Jakie parametry techniczne ma czujnik SoilMind Pro 3.0 i ile kosztuje?",
+    "ground_truth": "SoilMind Pro 3.0 mierzy jednocześnie wilgotność, temperaturę, pH i przewodność elektryczną gleby. Komunikuje się przez LoRaWAN na zasięgu 2,4 km. Cena wynosi 1 890 PLN netto. Pobór mocy to 0,3 W, a czas pracy na baterii to 7 lat. Czujnik posiada stopień ochrony IP68 i certyfikat CE 2024/53/UE.",
+    "category": "produkt"
+  },
+  {
+    "id": 4,
+    "question": "Co to jest ZorbScript i kto jest jego autorem?",
+    "ground_truth": "ZorbScript to wewnętrzny język programowania firmy Zorbex S.A., stworzony przez Tomasza Błędowskiego — Dyrektora Technicznego firmy. Bazuje na składni Pythona 3.11 i służy do konfiguracji czujników SoilMind. Pliki ZorbScript mają rozszerzenie .zbs.",
+    "category": "technologia"
+  },
+  {
+    "id": 5,
+    "question": "Jakie były przychody Zorbex S.A. w 2022 i 2023 roku oraz jaka była EBITDA za 2023?",
+    "ground_truth": "W 2022 roku Zorbex S.A. osiągnęła przychód 31,7 miliona PLN. W 2023 roku przychód wzrósł do 47,3 miliona PLN. EBITDA za rok 2023 wyniosła 8,9 miliona PLN. Roczny raport za 2023 oznaczony jest kodem ZOR-2023-A.",
+    "category": "finanse"
+  },
+  {
+    "id": 6,
+    "question": "Czego dotyczy patent PL-2021-00847 i gdzie jest zarejestrowany?",
+    "ground_truth": "Patent PL-2021-00847 dotyczy algorytmu kalibracji czujnika o nazwie SoilMind Core, będącego rdzeniem technologicznym produktu SoilMind Pro 3.0. Patent jest zarejestrowany w Urzędzie Patentowym Rzeczypospolitej Polskiej.",
+    "category": "własność_intelektualna"
+  },
+  {
+    "id": 7,
+    "question": "Jacy są główni klienci Zorbex S.A. i jak korzystają z jej produktów?",
+    "ground_truth": "Największym klientem jest Kooperatywa Zbożowa Podlasie z siedzibą w Białymstoku, która wdrożyła 340 czujników SoilMind Pro 3.0 na swoich polach. Drugim kluczowym klientem jest Agrogospodarstwo Sadłocha i Mróz z Zamościa, zarządzające 8 400 hektarami gruntów rolnych.",
+    "category": "klienci"
+  },
+  {
+    "id": 8,
+    "question": "Co to jest platforma Kwas Grid i gdzie mieści się jej centrum danych?",
+    "ground_truth": "Kwas Grid to własna platforma serwerowa Zorbex S.A. Centrum danych znajduje się przy ul. Przemysłowej 44 w Rybniku i dysponuje pojemnością 1 200 rdzeni obliczeniowych. Dane są szyfrowane algorytmem AES-256-GCM. Platforma obsługuje telemetrię ze wszystkich wdrożonych czujników SoilMind.",
+    "category": "infrastruktura"
+  },
+  {
+    "id": 9,
+    "question": "Kto jest głównym inwestorem Zorbex S.A. i jakie wsparcie finansowe firma otrzymała?",
+    "ground_truth": "Głównym inwestorem instytucjonalnym jest Fundacja Przyszłości Rolnictwa, która w 2020 roku udzieliła Zorbex S.A. grantu w wysokości 12,4 miliona PLN na rozwój platformy SoilMind. Dodatkowo spółka jest notowana na rynku NewConnect GPW od 2022 roku.",
+    "category": "finanse"
+  },
+  {
+    "id": 10,
+    "question": "Jakie nagrody zdobyła firma Zorbex S.A. i jaka jest struktura jej oddziałów?",
+    "ground_truth": "Zorbex S.A. otrzymała AgriTech Innovation Award 2022 oraz tytuł Gazeli Biznesu Dolina Krzemowa Agro 2023. Firma posiada trzy oddziały: centralę wraz z działem R&D w Gnieźnie, oddział produkcji elektroniki we Wrocławiu oraz oddział serwisu i logistyki w Gdańsku.",
+    "category": "ogólne"
+  }
+]
