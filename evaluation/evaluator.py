@@ -37,19 +37,49 @@ def _ask_llm_for_score(prompt: str) -> int | None:
         return None
 
 
-def score_faithfulness(answer: str, context: str) -> int | None:
-    # Faithfulness (wierność źródłom), 0-100: czy odpowiedź opiera się wyłącznie
-    # na faktach z kontekstu i niczego nie zmyśla.
-    # Sędzia wypisuje twierdzenia z odpowiedzi, oznacza każde jako YES (poparte
-    # kontekstem) lub NO, a wynik to odsetek YES.
-    # Odpowiedź sędziego czytamy na trzy sposoby, od najbardziej do najmniej
-    # wiarygodnego:
+def parse_faithfulness_output(raw: str) -> tuple[int | None, str]:
+    # Odczytuje wynik faithfulness z odpowiedzi sędziego na trzy sposoby, od najbardziej
+    # do najmniej wiarygodnego:
     #   1. linia "SCORE: X",
     #   2. policzenie oznaczeń "-> YES" i "-> NO",
     #   3. ostatnia liczba w tekście.
-    # Zwraca None, gdy brakuje odpowiedzi lub kontekstu.
+    # Zwraca parę (wynik 0-100 lub None, nazwa użytej warstwy). Nazwa warstwy trafia
+    # do CSV, żeby dało się wykryć wyniki odczytane z mniej pewnej warstwy 3
+    # (np. gdy odpowiedź sędziego została ucięta przez limit tokenów przed "SCORE:").
+
+    # Warstwa 1: szukaj linii "SCORE: X"
+    score_match = re.search(r'(?i)score[:\s=]+(\d{1,3})', raw)
+    if score_match:
+        return min(max(int(score_match.group(1)), 0), 100), "score"
+
+    # Warstwa 2: policz markery -> YES / -> NO i oblicz proporcję
+    yes_count = len(re.findall(r'->\s*YES', raw, re.IGNORECASE))
+    no_count = len(re.findall(r'->\s*NO', raw, re.IGNORECASE))
+    total = yes_count + no_count
+    if total > 0:
+        return round(yes_count / total * 100), "yes_no"
+
+    # Warstwa 3: weź ostatnią liczbę z tekstu
+    # Bierzemy OSTATNIĄ liczbę: pierwsza mogłaby być numerem z listy ("1."),
+    # a wynik sędzia zawsze podaje na końcu swojego rozumowania
+    all_nums = re.findall(r'\b(\d{1,3})\b', raw)
+    if all_nums:
+        return min(max(int(all_nums[-1]), 0), 100), "last_number"
+
+    return None, "none"
+
+
+def judge_faithfulness(answer: str, context: str) -> dict:
+    # Faithfulness (wierność źródłom), 0-100: czy odpowiedź opiera się wyłącznie
+    # na faktach z kontekstu i niczego nie zmyśla.
+    # Sędzia wypisuje twierdzenia z odpowiedzi, oznacza każde jako YES (poparte
+    # kontekstem) lub NO, a wynik to odsetek YES (odczyt: parse_faithfulness_output).
+    # Zwraca słownik z kluczami:
+    #   "score" - wynik 0-100 albo None (brak odpowiedzi/kontekstu lub błąd sędziego),
+    #   "raw"   - surowa odpowiedź sędziego (do ręcznej weryfikacji wyniku),
+    #   "layer" - warstwa parsowania, z której odczytano wynik.
     if not context.strip() or not answer.strip():
-        return None
+        return {"score": None, "raw": "", "layer": "none"}
 
     prompt = (
         "You are a strict AI evaluator measuring answer faithfulness to source facts.\n\n"
@@ -68,29 +98,15 @@ def score_faithfulness(answer: str, context: str) -> int | None:
     )
     try:
         raw = llm_engine.get_judge().complete(prompt).text.strip()
-
-        # Warstwa 1: szukaj linii "SCORE: X"
-        score_match = re.search(r'(?i)score[:\s=]+(\d{1,3})', raw)
-        if score_match:
-            return min(max(int(score_match.group(1)), 0), 100)
-
-        # Warstwa 2: policz markery -> YES / -> NO i oblicz proporcję
-        yes_count = len(re.findall(r'->\s*YES', raw, re.IGNORECASE))
-        no_count = len(re.findall(r'->\s*NO', raw, re.IGNORECASE))
-        total = yes_count + no_count
-        if total > 0:
-            return round(yes_count / total * 100)
-
-        # Warstwa 3: weź ostatnią liczbę z tekstu
-        # Bierzemy OSTATNIĄ liczbę: pierwsza mogłaby być numerem z listy ("1."),
-        # a wynik sędzia zawsze podaje na końcu swojego rozumowania
-        all_nums = re.findall(r'\b(\d{1,3})\b', raw)
-        if all_nums:
-            return min(max(int(all_nums[-1]), 0), 100)
-
-        return None
     except Exception:
-        return None
+        return {"score": None, "raw": "", "layer": "error"}
+    score, layer = parse_faithfulness_output(raw)
+    return {"score": score, "raw": raw, "layer": layer}
+
+
+def score_faithfulness(answer: str, context: str) -> int | None:
+    # Sam wynik faithfulness (0-100 lub None) — używany w zakładce Czat.
+    return judge_faithfulness(answer, context)["score"]
 
 
 def score_answer_correctness(generated: str, ground_truth: str) -> int | None:
@@ -212,13 +228,15 @@ def run_evaluation(dataset: list[dict], progress_callback=None) -> pd.DataFrame:
         vec_context = vec_output["context"]
 
         # Oblicz metryki dla wszystkich trzech metod
-        faith_rag = score_faithfulness(rag_answer, rag_context)
+        judge_rag = judge_faithfulness(rag_answer, rag_context)
+        faith_rag = judge_rag["score"]
         llm_corr = score_answer_correctness(llm_answer, ground_truth)
         rag_corr = score_answer_correctness(rag_answer, ground_truth)
         cit_prec_rag = score_citation_precision(rag_answer, rag_context)
         error_label = classify_error(rag_corr, llm_corr, faith_rag, rag_context)
 
-        faith_vec = score_faithfulness(vec_answer, vec_context)
+        judge_vec = judge_faithfulness(vec_answer, vec_context)
+        faith_vec = judge_vec["score"]
         vec_corr = score_answer_correctness(vec_answer, ground_truth)
         cit_prec_vec = score_citation_precision(vec_answer, vec_context)
 
@@ -243,6 +261,12 @@ def run_evaluation(dataset: list[dict], progress_callback=None) -> pd.DataFrame:
             "citation_precision_vec": cit_prec_vec,
             "czas_vec_s": czas_vec,
             "klasyfikacja_bledu": error_label,
+            # Surowe odpowiedzi sędziego i warstwa parsowania — pozwalają ręcznie sprawdzić
+            # podejrzane wyniki (np. bardzo niski faithfulness przy poprawnej odpowiedzi)
+            "sedzia_faith_rag_warstwa": judge_rag["layer"],
+            "sedzia_faith_rag_raw": judge_rag["raw"],
+            "sedzia_faith_vec_warstwa": judge_vec["layer"],
+            "sedzia_faith_vec_raw": judge_vec["raw"],
         })
 
     if progress_callback:

@@ -423,8 +423,9 @@ with tab3:
                     st.success(f"Załadowano {loaded}/{total_s} trójek.")
                     st.session_state.latest_graph_html = None
                     clear_retrieval_cache()  # nowe dane w bazie → stary cache jest nieaktualny
-                except Exception as e:
-                    st.error(f"Błąd połączenia z Neo4j: {e}")
+                except Exception:
+                    # Bez treści wyjątku: komunikat sterownika może zawierać adres i nazwę bazy
+                    st.error("Nie udało się połączyć z bazą Neo4j. Sprawdź ustawienia URI i hasła w panelu bocznym.")
 
     with col_vec:
         idx_status = "✅ Gotowy" if is_index_built() else "⚠️ Niezbudowany"

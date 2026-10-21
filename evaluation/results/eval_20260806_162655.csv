@@ -1,0 +1,228 @@
+﻿id,kategoria,pytanie,ground_truth,odpowiedz_llm,poprawnosc_llm,czas_llm_s,odpowiedz_rag,kontekst_rag,faithfulness_rag,poprawnosc_rag,citation_precision_rag,czas_rag_s,odpowiedz_vec,kontekst_vec,faithfulness_vec,poprawnosc_vec,citation_precision_vec,czas_vec_s,klasyfikacja_bledu
+1,ogólne,Kiedy i gdzie została założona firma Zorbex S.A.?,"Zorbex S.A. została założona w 2019 roku. Siedziba firmy mieści się przy ul. Mieszka I 17, 62-200 Gniezno.","**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}",,2.39,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Zorbex S.A. | NIP | 7842390156
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022",,,0.0,0.2,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | NIP | 7842390156
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022",,,0.0,0.26,Błąd obliczenia metryki
+2,zarząd,Kto jest obecnym Prezesem Zarządu Zorbex S.A. i od kiedy pełni tę funkcję?,"Prezesem Zarządu (CEO) Zorbex S.A. jest Marta Klejnot-Wasiak, która piastuje to stanowisko od 2021 roku. Wcześniej firmą kierował Henryk Dłubak (2019–2021).","**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}",,0.0,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Henryk Dlubak | BYL_PREZESEM | Zorbex S.A.
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Marta Klejnot-Wasiak | PELNI_FUNKCJE_OD | 2021
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Zorbex S.A. | NIP | 7842390156
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022",,,0.0,0.04,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Henryk Dlubak | BYL_PREZESEM | Zorbex S.A.
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Radoslaw Trabka | KIERUJE_DZIALEM | Badania i Rozwoj R&D Zorbex S.A.
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | NIP | 7842390156",,,0.0,0.33,Błąd obliczenia metryki
+3,produkt,Jakie parametry techniczne ma czujnik SoilMind Pro 3.0 i ile kosztuje?,"SoilMind Pro 3.0 mierzy jednocześnie wilgotność, temperaturę, pH i przewodność elektryczną gleby. Komunikuje się przez LoRaWAN na zasięgu 2,4 km. Cena wynosi 1 890 PLN netto. Pobór mocy to 0,3 W, a czas pracy na baterii to 7 lat. Czujnik posiada stopień ochrony IP68 i certyfikat CE 2024/53/UE.","**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}",,0.0,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+SoilMind Pro 3.0 | STOPIEN_OCHRONY | IP68
+SoilMind Pro 3.0 | MIERZY | temperature gleby
+SoilMind Pro 3.0 | MIERZY | przewodnosc elektryczna gleby
+SoilMind Pro 3.0 | PROTOKOL_KOMUNIKACJI | LoRaWAN
+Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Kwas Grid | OBSLUGUJE | telemetria czujnikow SoilMind w czasie rzeczywistym
+SoilMind Pro 3.0 | CERTYFIKAT | CE 2024/53/UE
+ZorbScript | PRZEZNACZONY_DO | konfiguracji czujnikow SoilMind
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | MIERZY | pH gleby
+PL-2021-00847 | PATENT_NA | algorytm kalibracji SoilMind Core
+SoilMind Pro 3.0 | CHRONIONY_PATENTEM | PL-2021-00847
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+Kooperatywa Zbozowa Podlasie | UZYWA | 340 czujnikow SoilMind Pro 3.0
+SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | CZAS_PRACY_BATERII_LAT | 7
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.",,,0.0,0.04,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby
+SoilMind Pro 3.0 | MIERZY | temperature gleby
+SoilMind Pro 3.0 | MIERZY | przewodnosc elektryczna gleby
+SoilMind Pro 3.0 | MIERZY | pH gleby
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | CZAS_PRACY_BATERII_LAT | 7
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | STOPIEN_OCHRONY | IP68
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.",,,0.0,0.28,Błąd obliczenia metryki
+4,technologia,Co to jest ZorbScript i kto jest jego autorem?,"ZorbScript to wewnętrzny język programowania firmy Zorbex S.A., stworzony przez Tomasza Błędowskiego — Dyrektora Technicznego firmy. Bazuje na składni Pythona 3.11 i służy do konfiguracji czujników SoilMind. Pliki ZorbScript mają rozszerzenie .zbs.","**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}",,0.0,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","ZorbScript | PRZEZNACZONY_DO | konfiguracji czujnikow SoilMind
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+ZorbScript | BAZUJE_NA | Python 3.11
+ZorbScript | STWORZONY_PRZEZ | Tomasz Bledowski
+ZorbScript | ROZSZERZENIE_PLIKOW | .zbs",,,0.0,0.02,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","ZorbScript | STWORZONY_PRZEZ | Tomasz Bledowski
+ZorbScript | ROZSZERZENIE_PLIKOW | .zbs
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+ZorbScript | BAZUJE_NA | Python 3.11
+ZorbScript | PRZEZNACZONY_DO | konfiguracji czujnikow SoilMind
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | NIP | 7842390156
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.",,,0.0,0.23,Błąd obliczenia metryki
+5,finanse,Jakie były przychody Zorbex S.A. w 2022 i 2023 roku oraz jaka była EBITDA za 2023?,"W 2022 roku Zorbex S.A. osiągnęła przychód 31,7 miliona PLN. W 2023 roku przychód wzrósł do 47,3 miliona PLN. EBITDA za rok 2023 wyniosła 8,9 miliona PLN. Roczny raport za 2023 oznaczony jest kodem ZOR-2023-A.","**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}",,0.0,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Zorbex S.A. | NIP | 7842390156
+Fundacja Przyszlosci Rolnictwa | GRANT_W_ROKU | 2020
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022",,,0.0,0.05,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022",,,0.0,0.39,Błąd obliczenia metryki
+6,własność_intelektualna,Czego dotyczy patent PL-2021-00847 i gdzie jest zarejestrowany?,"Patent PL-2021-00847 dotyczy algorytmu kalibracji czujnika o nazwie SoilMind Core, będącego rdzeniem technologicznym produktu SoilMind Pro 3.0. Patent jest zarejestrowany w Urzędzie Patentowym Rzeczypospolitej Polskiej.","**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}",,0.0,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","PL-2021-00847 | PATENT_NA | algorytm kalibracji SoilMind Core
+Marta Klejnot-Wasiak | PELNI_FUNKCJE_OD | 2021
+SoilMind Pro 3.0 | CHRONIONY_PATENTEM | PL-2021-00847
+PL-2021-00847 | ZAREJESTROWANY_W | Urzad Patentowy Rzeczypospolitej Polskiej
+Henryk Dlubak | KIEROWAL_W_LATACH | 2019-2021",,,0.0,0.05,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","PL-2021-00847 | ZAREJESTROWANY_W | Urzad Patentowy Rzeczypospolitej Polskiej
+PL-2021-00847 | PATENT_NA | algorytm kalibracji SoilMind Core
+SoilMind Pro 3.0 | CHRONIONY_PATENTEM | PL-2021-00847
+SoilMind Pro 3.0 | STOPIEN_OCHRONY | IP68
+SoilMind Pro 3.0 | CERTYFIKAT | CE 2024/53/UE
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+Kwas Grid | SZYFROWANIE | AES-256-GCM
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+Zorbex S.A. | NIP | 7842390156",,,0.0,0.26,Błąd obliczenia metryki
+7,klienci,Jacy są główni klienci Zorbex S.A. i jak korzystają z jej produktów?,"Największym klientem jest Kooperatywa Zbożowa Podlasie z siedzibą w Białymstoku, która wdrożyła 340 czujników SoilMind Pro 3.0 na swoich polach. Drugim kluczowym klientem jest Agrogospodarstwo Sadłocha i Mróz z Zamościa, zarządzające 8 400 hektarami gruntów rolnych.","**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}",,0.0,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Agrogospodarstwo Sadlocha i Mroz | JEST_KLIENTEM | Zorbex S.A.
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Zorbex S.A. | NIP | 7842390156
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022",,,0.0,0.03,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Agrogospodarstwo Sadlocha i Mroz | JEST_KLIENTEM | Zorbex S.A.
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | NIP | 7842390156
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.",,,0.0,0.34,Błąd obliczenia metryki
+8,infrastruktura,Co to jest platforma Kwas Grid i gdzie mieści się jej centrum danych?,Kwas Grid to własna platforma serwerowa Zorbex S.A. Centrum danych znajduje się przy ul. Przemysłowej 44 w Rybniku i dysponuje pojemnością 1 200 rdzeni obliczeniowych. Dane są szyfrowane algorytmem AES-256-GCM. Platforma obsługuje telemetrię ze wszystkich wdrożonych czujników SoilMind.,"**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}",,0.0,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Kwas Grid | OBSLUGUJE | telemetria czujnikow SoilMind w czasie rzeczywistym
+Kwas Grid | CENTRUM_DANYCH_W | ul. Przemyslowa 44, Rybnik
+Kwas Grid | JEST_PLATFORMA_SERWEROWA | Zorbex S.A.
+Kwas Grid | SZYFROWANIE | AES-256-GCM
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Kwas Grid | POJEMNOSC_RDZENI | 1200",,,0.0,0.04,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Kwas Grid | JEST_PLATFORMA_SERWEROWA | Zorbex S.A.
+Kwas Grid | SZYFROWANIE | AES-256-GCM
+Kwas Grid | CENTRUM_DANYCH_W | ul. Przemyslowa 44, Rybnik
+Kwas Grid | OBSLUGUJE | telemetria czujnikow SoilMind w czasie rzeczywistym
+Kwas Grid | POJEMNOSC_RDZENI | 1200
+SoilMind Pro 3.0 | MIERZY | pH gleby
+Agrogospodarstwo Sadlocha i Mroz | SIEDZIBA | Zamosc
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby",,,0.0,0.28,Błąd obliczenia metryki
+9,finanse,Kto jest głównym inwestorem Zorbex S.A. i jakie wsparcie finansowe firma otrzymała?,"Głównym inwestorem instytucjonalnym jest Fundacja Przyszłości Rolnictwa, która w 2020 roku udzieliła Zorbex S.A. grantu w wysokości 12,4 miliona PLN na rozwój platformy SoilMind. Dodatkowo spółka jest notowana na rynku NewConnect GPW od 2022 roku.","**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}",,0.0,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Zorbex S.A. | NIP | 7842390156
+Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.",,,0.0,0.03,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.
+Zorbex S.A. | NIP | 7842390156
+Agrogospodarstwo Sadlocha i Mroz | JEST_KLIENTEM | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.",,,0.0,0.32,Błąd obliczenia metryki
+10,ogólne,Jakie nagrody zdobyła firma Zorbex S.A. i jaka jest struktura jej oddziałów?,"Zorbex S.A. otrzymała AgriTech Innovation Award 2022 oraz tytuł Gazeli Biznesu Dolina Krzemowa Agro 2023. Firma posiada trzy oddziały: centralę wraz z działem R&D w Gnieźnie, oddział produkcji elektroniki we Wrocławiu oraz oddział serwisu i logistyki w Gdańsku.","**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}",,0.0,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Zorbex S.A. | NIP | 7842390156
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022",,,0.0,0.05,"**[Błąd generowania odpowiedzi]** Error code: 404 - {'error': {'message': 'Model ""local-model"" not found. Please specify a valid model.\n\nYour models:\n\nhermes-3-llama-3.2-3b\ngoogle/gemma-3-27b\ntext-embedding-nomic-embed-text-v1.5', 'type': 'invalid_request_error', 'param': 'model', 'code': 'model_not_found'}}","Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Radoslaw Trabka | KIERUJE_DZIALEM | Badania i Rozwoj R&D Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Zorbex S.A. | NIP | 7842390156",,,0.0,0.32,Błąd obliczenia metryki

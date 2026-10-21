@@ -1,0 +1,378 @@
+﻿id,kategoria,pytanie,ground_truth,odpowiedz_llm,poprawnosc_llm,czas_llm_s,odpowiedz_rag,kontekst_rag,faithfulness_rag,poprawnosc_rag,citation_precision_rag,czas_rag_s,odpowiedz_vec,kontekst_vec,faithfulness_vec,poprawnosc_vec,citation_precision_vec,czas_vec_s,klasyfikacja_bledu
+1,definicja,Co to jest architektura RAG (Retrieval-Augmented Generation)?,"RAG to architektura łącząca model językowy (LLM) z zewnętrznym mechanizmem wyszukiwania wiedzy. Przed wygenerowaniem odpowiedzi system pobiera odpowiednie fakty z bazy danych i dołącza je do promptu, co redukuje halucynacje i umożliwia dostęp do aktualnych informacji.","Architektura RAG (Retrieval-Augmented Generation) to technika w dziedzinie sztucznej inteligencji, która łączy modele generatywne języka (LLM), takie jak GPT, z systemem wyszukiwania informacji. 
+
+**Kluczowe elementy i działanie:**
+
+1.  **Wyszukiwanie (Retrieval):** Na podstawie zapytania użytkownika pobierane są odpowiednie fragmenty wiedzy z zewnętrznego źródła danych (np. bazy wiedzy, dokumentów).
+2.  **Augmentacja (Augmentation):** Pobraną wiedzę dołącza się do oryginalnego zapytania użytkownika jako kontekst.
+3.  **Generowanie (Generation):** Model LLM wykorzystuje połączone zapytanie i pobrany kontekst do wygenerowania odpowiedzi.
+
+**Cel:** Poprawa jakości, dokładności i wiarygodności generowanych odpowiedzi poprzez oparcie ich na aktualnych i specyficznych danych, a nie tylko na wiedzy zawartej w parametrach modelu LLM. RAG pozwala również uniknąć halucynacji (wymyślania faktów) przez model.
+",95,50.86,"**Odpowiedź z Grafu Neo4j**
+
+Architektura RAG (Retrieval-Augmented Generation) to skrót od Retrieval-Augmented Generation. Łączy ona mechanizm wyszukiwania wiedzy z modelem językowym LLM. Przed udzieleniem odpowiedzi, RAG pobiera fakty z bazy danych. Dodatkowo, RAG łączy model językowy LLM i umożliwia dostęp do aktualnych informacji zewnętrznych oraz rozwiązuje ograniczenie stałej daty granicznej wiedzy. RAG dołącza kontekst z bazy wiedzy do promptu. Systemy RAG mogą wykorzystywać graf wiedzy zamiast klasycznych wektorowych baz dokumentów, a w tych systemach stosowane są Neo4j i wyszukiwanie semantyczne, które znajduje fragmenty tekstu podobne znaczeniowo. Faithfulness jest metryką ewaluacji systemów RAG, a wysoki wynik faithfulness oznacza brak halucynacji w odpowiedzi RAG. Modele LLM generują halucynacje przy pytaniach o konkretne fakty, co RAG redukuje. Faithfulness stosowana jest w ewaluacji systemów RAG.","RAG | REDUKUJE | halucynacje modelu
+faithfulness | WYSOKI_WYNIK_OZNACZA | brak halucynacji w odpowiedzi RAG
+RAG | POBIERA | fakty z bazy danych przed odpowiedzią
+RAG | JEST_SKROTEM_OD | Retrieval-Augmented Generation
+faithfulness | JEST | metryka ewaluacji systemów RAG
+model LLM | GENERUJE | halucynacje przy pytaniach o konkretne fakty
+faithfulness | STOSOWANA_W | ewaluacja systemów RAG
+graf wiedzy | ZASTEPUJE | klasyczne wektorowe bazy dokumentów w RAG
+wyszukiwanie semantyczne | ZNAJDUJE | fragmenty tekstu podobne znaczeniowo
+graf wiedzy | STOSOWANY_W | systemy RAG
+Neo4j | STOSOWANY_W | systemy RAG
+RAG | LACZY | mechanizm wyszukiwania wiedzy
+RAG | UMOZLIWIA_DOSTEP_DO | aktualne informacje zewnętrzne
+RAG | DOLACZA_DO | prompt kontekst z bazy wiedzy
+RAG | LACZY | model językowy LLM
+RAG | ROZWIAZUJE_OGRANICZENIE | stała data graniczna wiedzy",100,90,0.625,50.47,"**Odpowiedź z RAG Wektorowego**
+
+Architektura RAG (Retrieval-Augmented Generation) to mechanizm wyszukiwania wiedzy oraz łączy model językowy LLM. Przed udzieleniem odpowiedzi, RAG pobiera fakty z bazy danych. Dodatkowo, RAG redukuje halucynacje modelu. Systemy RAG stosują graf wiedzy, który zastępuje klasyczne wektorowe bazy dokumentów. W kontekście systemów RAG wykorzystuje się także Neo4j. Ewaluacja tych systemów obejmuje metrykę o nazwie faithfulness, która jest również stosowana w procesie oceny.","RAG | JEST_SKROTEM_OD | Retrieval-Augmented Generation
+RAG | LACZY | mechanizm wyszukiwania wiedzy
+graf wiedzy | STOSOWANY_W | systemy RAG
+faithfulness | STOSOWANA_W | ewaluacja systemów RAG
+faithfulness | JEST | metryka ewaluacji systemów RAG
+graf wiedzy | ZASTEPUJE | klasyczne wektorowe bazy dokumentów w RAG
+RAG | POBIERA | fakty z bazy danych przed odpowiedzią
+RAG | LACZY | model językowy LLM
+Neo4j | STOSOWANY_W | systemy RAG
+RAG | REDUKUJE | halucynacje modelu",100,85,0.8,25.49,OK
+2,porównanie,Jakie są zalety grafowych baz danych w porównaniu do relacyjnych?,"Grafowe bazy danych są wydajniejsze przy zapytaniach o wielopoziomowe relacje, ponieważ nie wymagają kosztownych złączeń (JOIN). Oferują elastyczny schemat, naturalną reprezentację sieci i połączeń, oraz szybkie przechodzenie po relacjach bez względu na rozmiar bazy.","Grafowe bazy danych przewyższają relacyjne pod względem:
+
+*   **Wydajności przy złożonych relacjach:** Szybciej przeszukują powiązane dane, szczególnie gdy głębokość relacji jest duża. Relacyjne wymagają kosztownych operacji JOIN.
+*   **Elastyczności schematu:** Łatwiejsze dodawanie nowych typów relacji i właściwości bez modyfikacji istniejącej struktury.
+*   **Naturalnego modelowania danych:** Lepsze odwzorowanie rzeczywistych powiązań, np. sieci społecznościowe, grafy wiedzy.
+*   **Czytelności zapytań:** Zapytania są bardziej intuicyjne i zbliżone do języka naturalnego (np. Cypher).
+
+Relacyjne bazy danych nadal są lepsze w przypadku prostych struktur danych i transakcji wymagających silnej spójności ACID.
+",90,38.2,"**Odpowiedź z Grafu Neo4j**
+
+Grafowe bazy danych oferują elastyczny schemat danych i nie wymagają operacji JOIN, w przeciwieństwie do relacyjnych baz danych, które mają stały schemat tabel i wymagają kosztownych operacji JOIN. Ponadto, grafowa baza danych jest wydajniejsza niż relacyjna baza danych oraz umożliwia szybkie przechodzenie po relacjach. Grafowe bazy danych przechowują węzły i relacje z właściwościami, co pozwala na łatwe nawigowanie struktury relacji w grafie za pomocą zapytań grafowych. Zapytania grafowe odpowiadają na pytania wielopoziomowe o relacje i są dokładniejsze przy złożonych relacjach między encjami.","RAG | POBIERA | fakty z bazy danych przed odpowiedzią
+zapytania grafowe | NAWIGUJA | strukturę relacji w grafie
+grafowa baza danych | UMOZLIWIA | szybkie przechodzenie po relacjach
+grafowa baza danych | SKLADA_SIE_Z | węzły i relacje
+ekstrakcja trójek | WYNIK_ZAPISYWANY_DO | grafowa baza danych
+Neo4j | JEST | natywna grafowa baza danych
+relacyjna baza danych | MA_STALY | schemat tabel
+grafowa baza danych | NIE_WYMAGA | operacje JOIN
+graf wiedzy | PRZYKLAD | Google Knowledge Graph
+grafowa baza danych | PRZECHOWUJE | węzły i relacje z właściwościami
+zapytania grafowe | ODPOWIADAJA_NA | pytania wielopoziomowe o relacje
+relacyjna baza danych | WYMAGA | kosztowne operacje JOIN
+grafowa baza danych | OFERUJE | elastyczny schemat danych
+zapytania grafowe | SA_DOKLADNIEJSZE_PRZY | złożone relacje między encjami
+grafowa baza danych | JEST_WYDAJNIEJSZA_NIZ | relacyjna baza danych
+faithfulness | MIERZY | stopień bazowania odpowiedzi na kontekście
+RAG | DOLACZA_DO | prompt kontekst z bazy wiedzy
+Cypher | UMOZLIWIA | dopasowywanie wzorców grafowych
+graf wiedzy | ZASTEPUJE | klasyczne wektorowe bazy dokumentów w RAG",100,90,0.474,36.07,"**Odpowiedź z RAG Wektorowego**
+
+Grafowa baza danych jest wydajniejsza niż relacyjna baza danych. Umożliwia ona szybkie przechodzenie po relacjach i oferuje elastyczny schemat danych. Dodatkowo, grafowa baza danych nie wymaga operacji JOIN, co stanowi kolejną zaletę w porównaniu do baz relacyjnych. Składa się z węzłów i relacji oraz przechowuje węzły i relacje z właściwościami. Zapytania grafowe są dokładniejsze przy złożonych relacjach między encjami i nawigują strukturę relacji w grafie, odpowiadając na pytania wielopoziomowe o relacje. Neo4j jest natywną grafową bazą danych.","grafowa baza danych | JEST_WYDAJNIEJSZA_NIZ | relacyjna baza danych
+grafowa baza danych | UMOZLIWIA | szybkie przechodzenie po relacjach
+grafowa baza danych | OFERUJE | elastyczny schemat danych
+grafowa baza danych | PRZECHOWUJE | węzły i relacje z właściwościami
+zapytania grafowe | SA_DOKLADNIEJSZE_PRZY | złożone relacje między encjami
+grafowa baza danych | SKLADA_SIE_Z | węzły i relacje
+zapytania grafowe | NAWIGUJA | strukturę relacji w grafie
+grafowa baza danych | NIE_WYMAGA | operacje JOIN
+zapytania grafowe | ODPOWIADAJA_NA | pytania wielopoziomowe o relacje
+Neo4j | JEST | natywna grafowa baza danych",100,85,0.8,29.85,OK
+3,definicja,Do czego służy język Cypher?,"Cypher to deklaratywny język zapytań przeznaczony dla grafowych baz danych, przede wszystkim Neo4j. Umożliwia dopasowywanie wzorców grafowych, tworzenie i modyfikację węzłów i relacji oraz filtrowanie danych. Jego składnia opiera się na wzorcach ASCII-art, np. (n)-[:RELACJA]->(m).","Język Cypher to deklaratywny język zapytań grafowych, używany głównie do zarządzania i manipulowania danymi w bazie danych Neo4j. Służy do:
+
+*   **Tworzenia, odczytu, aktualizacji i usuwania węzłów oraz relacji w grafie.**
+*   **Wyszukiwania wzorców i ścieżek w danych grafowych.**
+*   **Analizy powiązań między danymi.**
+
+Krótko mówiąc, Cypher pozwala na efektywne operowanie na danych reprezentowanych jako grafy.
+",90,24.41,"**Odpowiedź z Grafu Neo4j**
+
+Język Cypher jest deklaratywnym językiem zapytań i służy do tworzenia węzłów i relacji. Umożliwia on również filtrowanie danych w grafie oraz dopasowywanie wzorców grafowych. Cypher używa składni wzorców ASCII-art, a jego przykładowa składnia to (n)-[:RELACJA]->(m). Jest językiem zapytań dla bazy danych Neo4j, która go wykorzystuje.","Cypher | UMOZLIWIA | tworzenie węzłów i relacji
+Cypher | PRZYKLADOWA_SKLADNIA | (n)-[:RELACJA]->(m)
+Cypher | JEST | deklaratywny język zapytań
+Cypher | UMOZLIWIA | filtrowanie danych w grafie
+Cypher | UZYWA_SKLADNI | wzorce ASCII-art
+Neo4j | UZYWA_JEZYKA | Cypher
+ekstrakcja trójek | WYKORZYSTUJE | model językowy LLM
+Cypher | UMOZLIWIA | dopasowywanie wzorców grafowych
+Cypher | JEST_JEZYKIEM_ZAPYTAN_DLA | Neo4j
+RAG | LACZY | model językowy LLM",100,95,0.7,27.38,"**Odpowiedź z RAG Wektorowego**
+
+Język Cypher jest deklaratywnym językiem zapytań i służy jako język zapytań dla bazy danych Neo4j. Baza danych Neo4j używa języka Cypher. Cypher umożliwia tworzenie węzłów i relacji, a także filtrowanie danych w grafie oraz dopasowywanie wzorców grafowych. Używa składni opartej na wzorcach ASCII-art, a przykładowa składnia to (n)-[:RELACJA]->(m).","Cypher | JEST | deklaratywny język zapytań
+Cypher | JEST_JEZYKIEM_ZAPYTAN_DLA | Neo4j
+Neo4j | UZYWA_JEZYKA | Cypher
+Cypher | UMOZLIWIA | tworzenie węzłów i relacji
+Cypher | UZYWA_SKLADNI | wzorce ASCII-art
+Cypher | UMOZLIWIA | filtrowanie danych w grafie
+Cypher | UMOZLIWIA | dopasowywanie wzorców grafowych
+Cypher | PRZYKLADOWA_SKLADNIA | (n)-[:RELACJA]->(m)
+węzeł | REPREZENTUJE | encję lub obiekt w domenie wiedzy
+Neo4j | STOSOWANY_W | zarządzanie tożsamością i dostępem",100,95,0.8,23.27,OK
+4,analiza,Jakie ograniczenia mają standardowe modele LLM bez zewnętrznego kontekstu?,"Modele LLM bez zewnętrznego kontekstu mają stałą datę graniczną wiedzy, generują halucynacje przy pytaniach o konkretne fakty, nie mają dostępu do prywatnych lub specjalistycznych danych oraz nie potrafią precyzyjnie wskazać źródła swoich odpowiedzi.","Standardowe modele LLM (Large Language Models) bez dostępu do zewnętrznego kontekstu mają następujące główne ograniczenia:
+
+*   **Brak aktualnej wiedzy:** Wiedza modelu jest ograniczona danymi, na których został wytrenowany. Nie posiadają informacji o wydarzeniach po dacie zakończenia treningu.
+*   **Halucynacje:** Mogą generować fałszywe lub nieprawdziwe informacje, prezentując je jako fakty.
+*   **Ograniczona zdolność do rozumowania w czasie rzeczywistym:** Nie mogą uwzględniać bieżących danych ani zmieniających się warunków.
+*   **Trudności z personalizacją:** Brak dostępu do indywidualnych danych użytkownika uniemożliwia tworzenie spersonalizowanych odpowiedzi.
+*   **Brak możliwości wykonywania działań:** Nie potrafią bezpośrednio wykonywać zadań, takich jak wyszukiwanie informacji w internecie czy interakcja z API.
+*   **Kontekst okna:** Pamięć modelu jest ograniczona długością kontekstu (liczba tokenów), co wpływa na zdolność do rozumienia i odpowiadania na złożone pytania wymagające szerszego zakresu informacji.",90,50.74,"**Odpowiedź z Grafu Neo4j**
+
+Standardowe modele LLM mają kilka ograniczeń. Generują halucynacje przy pytaniach o konkretne fakty i nie potrafią precyzyjnie wskazać źródła odpowiedzi. Dodatkowo, modele LLM nie mają dostępu do specjalistycznych danych dziedzinowych ani prywatnych danych użytkownika oraz posiadają stałą datę graniczną wiedzy, co stanowi dla nich ograniczenie.","RAG | REDUKUJE | halucynacje modelu
+model LLM | NIE_MA_DOSTEPU_DO | specjalistyczne dane dziedzinowe
+ekstrakcja trójek | WYKORZYSTUJE | model językowy LLM
+model LLM | GENERUJE | halucynacje przy pytaniach o konkretne fakty
+model LLM | NIE_POTRAFI | precyzyjnie wskazać źródło odpowiedzi
+RAG | LACZY | model językowy LLM
+RAG | ROZWIAZUJE_OGRANICZENIE | stała data graniczna wiedzy
+model LLM | NIE_MA_DOSTEPU_DO | prywatne dane użytkownika
+model LLM | MA_OGRANICZENIE | stała data graniczna wiedzy",100,95,0.0,20.45,"**Odpowiedź z RAG Wektorowego**
+
+Standardowe modele LLM mają kilka ograniczeń. Przede wszystkim, posiadają stałą datę graniczną wiedzy (model LLM | MA_OGRANICZENIE | stała data graniczna wiedzy). Dodatkowo, nie potrafią precyzyjnie wskazać źródła odpowiedzi (model LLM | NIE_POTRAFI | precyzyjnie wskazać źródło odpowiedzi) i generują halucynacje przy pytaniach o konkretne fakty (model LLM | GENERUJE | halucynacje przy pytaniach o konkretne fakty). Modele te nie mają dostępu do specjalistycznych danych dziedzinowych ani prywatnych danych użytkownika (model LLM | NIE_MA_DOSTEPU_DO | specjalistyczne dane dziedzinowe, model LLM | NIE_MA_DOSTEPU_DO | prywatne dane użytkownika).","model LLM | NIE_MA_DOSTEPU_DO | specjalistyczne dane dziedzinowe
+model LLM | NIE_POTRAFI | precyzyjnie wskazać źródło odpowiedzi
+RAG | LACZY | model językowy LLM
+model LLM | MA_OGRANICZENIE | stała data graniczna wiedzy
+model LLM | NIE_MA_DOSTEPU_DO | prywatne dane użytkownika
+model LLM | GENERUJE | halucynacje przy pytaniach o konkretne fakty
+ekstrakcja trójek | WYKORZYSTUJE | model językowy LLM
+faithfulness | MIERZY | stopień bazowania odpowiedzi na kontekście
+graf wiedzy | UMOZLIWIA | rozumienie kontekstu i semantyki przez maszyny
+RAG | LACZY | mechanizm wyszukiwania wiedzy",100,95,0.5,38.52,OK
+5,definicja,Czym są węzły i relacje w grafowej bazie danych?,"Węzły (ang. nodes) reprezentują encje, czyli obiekty lub pojęcia w domenie wiedzy. Relacje (ang. relationships lub edges) łączą węzły i opisują charakter ich powiązania. Zarówno węzły, jak i relacje mogą posiadać właściwości (pary klucz-wartość).","Węzły (ang. *nodes*) reprezentują obiekty lub encje w grafowej bazie danych, np. osoby, miejsca, produkty. Każdy węzeł posiada unikalny identyfikator oraz może zawierać właściwości (ang. *properties*), czyli atrybuty opisujące ten obiekt (np. imię, adres, cena).
+
+Relacje (ang. *relationships*) definiują połączenia między węzłami, wskazując jak te obiekty są ze sobą powiązane (np. ""zna"", ""mieszka w"", ""posiada""). Relacje mają kierunek i typ oraz mogą również posiadać właściwości opisujące charakter tego połączenia (np. data znajomości, stopień pokrewieństwa).
+
+Krótko mówiąc: **węzły to obiekty, a relacje to powiązania między nimi.**
+",90,35.84,"**Odpowiedź z Grafu Neo4j**
+
+Grafowa baza danych składa się z węzłów i relacji. Przechowuje ona węzły i relacje z właściwościami. Relacja może posiadać właściwości w postaci par klucz-wartość, a opisuje charakter powiązania między węzłami oraz łączy dwa węzły w grafie. Ekstrakcja trójek tworzy węzły i krawędzie w grafie poprzez wyodrębnienie relacji między encjami z tekstu, a wynik zapisywany jest do grafowej bazy danych.","RAG | POBIERA | fakty z bazy danych przed odpowiedzią
+Cypher | PRZYKLADOWA_SKLADNIA | (n)-[:RELACJA]->(m)
+zapytania grafowe | NAWIGUJA | strukturę relacji w grafie
+grafowa baza danych | UMOZLIWIA | szybkie przechodzenie po relacjach
+relacja | MOZE_POSIADAC | właściwości w postaci par klucz-wartość
+grafowa baza danych | SKLADA_SIE_Z | węzły i relacje
+ekstrakcja trójek | PRODUKUJE | format Podmiot Relacja Obiekt
+ekstrakcja trójek | WYNIK_ZAPISYWANY_DO | grafowa baza danych
+ekstrakcja trójek | POLEGA_NA | wyodrębnieniu relacji między encjami z tekstu
+Neo4j | JEST | natywna grafowa baza danych
+Cypher | UMOZLIWIA | filtrowanie danych w grafie
+relacyjna baza danych | MA_STALY | schemat tabel
+grafowa baza danych | NIE_WYMAGA | operacje JOIN
+graf wiedzy | PRZYKLAD | Google Knowledge Graph
+grafowa baza danych | PRZECHOWUJE | węzły i relacje z właściwościami
+relacyjna baza danych | WYMAGA | kosztowne operacje JOIN
+graf wiedzy | ZAWIERA | encje i relacje semantyczne
+zapytania grafowe | ODPOWIADAJA_NA | pytania wielopoziomowe o relacje
+grafowa baza danych | OFERUJE | elastyczny schemat danych
+grafowa baza danych | JEST_WYDAJNIEJSZA_NIZ | relacyjna baza danych
+zapytania grafowe | SA_DOKLADNIEJSZE_PRZY | złożone relacje między encjami
+Cypher | UMOZLIWIA | tworzenie węzłów i relacji
+relacja | OPISUJE | charakter powiązania między węzłami
+relacja | LACZY | dwa węzły w grafie
+ekstrakcja trójek | TWORZY | węzły i krawędzie w grafie
+Cypher | UMOZLIWIA | dopasowywanie wzorców grafowych",100,90,0.308,27.52,"**Odpowiedź z RAG Wektorowego**
+
+Grafowa baza danych przechowuje węzły i relacje z właściwościami oraz składa się z węzłów i relacji. Relacja opisuje charakter powiązania między węzłami i łączy dwa węzły w grafie. Zapytania grafowe nawigują po strukturze relacji w grafie, umożliwiając szybkie przechodzenie po tych relacjach, a także odpowiadają na pytania wielopoziomowe o te relacje. Cypher umożliwia tworzenie węzłów i relacji w grafowej bazie danych.","grafowa baza danych | PRZECHOWUJE | węzły i relacje z właściwościami
+grafowa baza danych | SKLADA_SIE_Z | węzły i relacje
+zapytania grafowe | NAWIGUJA | strukturę relacji w grafie
+grafowa baza danych | UMOZLIWIA | szybkie przechodzenie po relacjach
+relacja | OPISUJE | charakter powiązania między węzłami
+relacja | LACZY | dwa węzły w grafie
+Cypher | UMOZLIWIA | tworzenie węzłów i relacji
+grafowa baza danych | JEST_WYDAJNIEJSZA_NIZ | relacyjna baza danych
+zapytania grafowe | ODPOWIADAJA_NA | pytania wielopoziomowe o relacje
+graf wiedzy | ZAWIERA | encje i relacje semantyczne",100,85,0.5,24.0,OK
+6,definicja,Co to jest graf wiedzy (knowledge graph)?,Graf wiedzy to strukturalna reprezentacja wiedzy w postaci sieci encji i relacji między nimi. Pozwala maszynom rozumieć kontekst i semantykę danych. Przykłady to Google Knowledge Graph czy Wikidata. W systemach RAG graf wiedzy zastępuje lub uzupełnia klasyczne wektorowe bazy dokumentów.,"Graf wiedzy to baza danych reprezentująca wiedzę w postaci grafu, gdzie węzłami są encje (rzeczy, pojęcia), a krawędziami relacje między nimi. Umożliwia modelowanie złożonych powiązań i wnioskowanie na podstawie dostępnych informacji. Przykłady: Google Knowledge Graph, Wikidata.
+",90,14.32,"**Odpowiedź z Grafu Neo4j**
+
+Graf wiedzy to strukturalna reprezentacja wiedzy oraz przykładem takiego grafu jest Google Knowledge Graph i Wikidata. Zawiera on encje i relacje semantyczne, a także węzły i relacje z właściwościami. Umożliwia rozumienie kontekstu i semantyki przez maszyny oraz jest stosowany w systemach RAG. Graf wiedzy zastępuje klasyczne wektorowe bazy dokumentów w RAG.","RAG | POBIERA | fakty z bazy danych przed odpowiedzią
+zapytania grafowe | NAWIGUJA | strukturę relacji w grafie
+grafowa baza danych | UMOZLIWIA | szybkie przechodzenie po relacjach
+grafowa baza danych | SKLADA_SIE_Z | węzły i relacje
+węzeł | REPREZENTUJE | encję lub obiekt w domenie wiedzy
+ekstrakcja trójek | WYNIK_ZAPISYWANY_DO | grafowa baza danych
+RAG | ROZWIAZUJE_OGRANICZENIE | stała data graniczna wiedzy
+model LLM | MA_OGRANICZENIE | stała data graniczna wiedzy
+Neo4j | JEST | natywna grafowa baza danych
+Cypher | UMOZLIWIA | filtrowanie danych w grafie
+grafowa baza danych | NIE_WYMAGA | operacje JOIN
+graf wiedzy | PRZYKLAD | Google Knowledge Graph
+grafowa baza danych | PRZECHOWUJE | węzły i relacje z właściwościami
+zapytania grafowe | ODPOWIADAJA_NA | pytania wielopoziomowe o relacje
+graf wiedzy | ZAWIERA | encje i relacje semantyczne
+RAG | LACZY | mechanizm wyszukiwania wiedzy
+grafowa baza danych | OFERUJE | elastyczny schemat danych
+grafowa baza danych | JEST_WYDAJNIEJSZA_NIZ | relacyjna baza danych
+zapytania grafowe | SA_DOKLADNIEJSZE_PRZY | złożone relacje między encjami
+graf wiedzy | UMOZLIWIA | rozumienie kontekstu i semantyki przez maszyny
+graf wiedzy | JEST | strukturalna reprezentacja wiedzy
+relacja | LACZY | dwa węzły w grafie
+graf wiedzy | STOSOWANY_W | systemy RAG
+RAG | DOLACZA_DO | prompt kontekst z bazy wiedzy
+ekstrakcja trójek | TWORZY | węzły i krawędzie w grafie
+Neo4j | STOSOWANY_W | zarządzanie wiedzą korporacyjną
+Cypher | UMOZLIWIA | dopasowywanie wzorców grafowych
+model LLM | NIE_POTRAFI | precyzyjnie wskazać źródło odpowiedzi
+graf wiedzy | PRZYKLAD | Wikidata
+graf wiedzy | ZASTEPUJE | klasyczne wektorowe bazy dokumentów w RAG",100,90,0.233,24.31,"**Odpowiedź z RAG Wektorowego**
+
+Graf wiedzy to strukturalna reprezentacja wiedzy. Jest on przykładem takich struktur jak Wikidata oraz Google Knowledge Graph. Graf wiedzy zawiera encje i relacje semantyczne, a także umożliwia rozumienie kontekstu i semantyki przez maszyny. Dodatkowo graf wiedzy jest stosowany w systemach RAG i może zastępować klasyczne wektorowe bazy dokumentów w tych systemach. Węzeł w grafie wiedzy reprezentuje encję lub obiekt w domenie wiedzy, a zapytania grafowe nawigują strukturę relacji w grafie.","graf wiedzy | JEST | strukturalna reprezentacja wiedzy
+graf wiedzy | PRZYKLAD | Wikidata
+graf wiedzy | PRZYKLAD | Google Knowledge Graph
+graf wiedzy | STOSOWANY_W | systemy RAG
+graf wiedzy | ZAWIERA | encje i relacje semantyczne
+graf wiedzy | UMOZLIWIA | rozumienie kontekstu i semantyki przez maszyny
+węzeł | REPREZENTUJE | encję lub obiekt w domenie wiedzy
+RAG | LACZY | mechanizm wyszukiwania wiedzy
+graf wiedzy | ZASTEPUJE | klasyczne wektorowe bazy dokumentów w RAG
+zapytania grafowe | NAWIGUJA | strukturę relacji w grafie",100,90,0.7,25.12,OK
+7,mechanizm,Na czym polega ekstrakcja trójek (triplet extraction) z tekstu?,"Ekstrakcja trójek polega na automatycznym wyodrębnieniu z tekstu relacji w formacie (Podmiot, Relacja, Obiekt), np. (Python, STWORZONY_PRZEZ, Guido van Rossum). Trójki te są następnie zapisywane do grafowej bazy danych jako węzły i krawędzie.","Ekstrakcja trójek to proces identyfikowania relacji między trzema elementami w tekście, reprezentowanymi jako trójki: **(podmiot, relacja, obiekt)**. 
+
+*   **Podmiot:** Entytet, o którym mówimy.
+*   **Relacja:** Rodzaj związku pomiędzy podmiotem a obiektem (np. ""pracuje dla"", ""jest stolicą"").
+*   **Obiekt:** Entytet związany z podmiotem poprzez relację.
+
+Przykładowo, w zdaniu ""Janusz pracuje w firmie XYZ"" ekstrakcja trójek mogłaby zwrócić: **(Janusz, pracuje w, firma XYZ)**.
+
+Techniki ekstrakcji trójek obejmują metody oparte na regułach, uczeniu maszynowym (np. sieci neuronowe) i modelach językowych. Służy do budowania baz wiedzy, analizy sentymentu i odpowiadania na pytania.
+",90,38.96,"**Odpowiedź z Grafu Neo4j**
+
+Ekstrakcja trójek polega na wyodrębnieniu relacji między encjami z tekstu. Proces ten tworzy węzły i krawędzie w grafie, a jego wynikiem jest format Podmiot Relacja Obiekt. Ekstrakcja trójek wykorzystuje model językowy LLM oraz zapisywana jest do grafowej bazy danych. Przykładem ekstrakcji trójek jest stwierdzenie ""Python STWORZONY_PRZEZ Guido van Rossum"".","graf wiedzy | UMOZLIWIA | rozumienie kontekstu i semantyki przez maszyny
+Cypher | PRZYKLADOWA_SKLADNIA | (n)-[:RELACJA]->(m)
+ekstrakcja trójek | WYKORZYSTUJE | model językowy LLM
+grafowa baza danych | UMOZLIWIA | szybkie przechodzenie po relacjach
+relacja | MOZE_POSIADAC | właściwości w postaci par klucz-wartość
+relacja | OPISUJE | charakter powiązania między węzłami
+ekstrakcja trójek | PRZYKLAD | Python STWORZONY_PRZEZ Guido van Rossum
+relacja | LACZY | dwa węzły w grafie
+ekstrakcja trójek | PRODUKUJE | format Podmiot Relacja Obiekt
+ekstrakcja trójek | WYNIK_ZAPISYWANY_DO | grafowa baza danych
+wyszukiwanie semantyczne | ZNAJDUJE | fragmenty tekstu podobne znaczeniowo
+RAG | DOLACZA_DO | prompt kontekst z bazy wiedzy
+ekstrakcja trójek | POLEGA_NA | wyodrębnieniu relacji między encjami z tekstu
+ekstrakcja trójek | TWORZY | węzły i krawędzie w grafie",100,90,0.357,24.8,"**Odpowiedź z RAG Wektorowego**
+
+Ekstrakcja trójek polega na wyodrębnieniu relacji między encjami z tekstu. Proces ten wykorzystuje model językowy LLM i produkuje format Podmiot Relacja Obiekt. Wyniki ekstrakcji są zapisywane do grafowej bazy danych, gdzie tworzone są węzły i krawędzie w grafie reprezentujące te relacje. Przykładową trójką jest ""Python STWORZONY_PRZEZ Guido van Rossum"".","ekstrakcja trójek | POLEGA_NA | wyodrębnieniu relacji między encjami z tekstu
+ekstrakcja trójek | WYKORZYSTUJE | model językowy LLM
+ekstrakcja trójek | WYNIK_ZAPISYWANY_DO | grafowa baza danych
+ekstrakcja trójek | PRODUKUJE | format Podmiot Relacja Obiekt
+ekstrakcja trójek | TWORZY | węzły i krawędzie w grafie
+ekstrakcja trójek | PRZYKLAD | Python STWORZONY_PRZEZ Guido van Rossum
+wyszukiwanie semantyczne | ZNAJDUJE | fragmenty tekstu podobne znaczeniowo
+RAG | JEST_SKROTEM_OD | Retrieval-Augmented Generation
+Cypher | UMOZLIWIA | dopasowywanie wzorców grafowych
+wyszukiwanie semantyczne | JEST_LEPSZE_PRZY | podobieństwo treści dokumentów",100,90,0.5,20.51,OK
+8,porównanie,Czym różni się wyszukiwanie semantyczne od zapytań grafowych?,"Wyszukiwanie semantyczne używa wektorów osadzeń (embeddings) do znajdowania fragmentów tekstu podobnych znaczeniowo do zapytania. Zapytania grafowe nawigują po strukturze relacji, odpowiadając na pytania wielopoziomowe, np. znajdź wszystkie technologie używane przez firmę, która zatrudnia daną osobę. Grafy są dokładniejsze przy złożonych relacjach, embeddingi przy podobieństwie treści.","Wyszukiwanie semantyczne koncentruje się na *znaczeniu* zapytania i dokumentów, rozumiejąc intencję użytkownika i relacje między pojęciami. Wykorzystuje modele językowe do interpretacji treści i dopasowywania synonimów, kontekstu itp.
+
+Zapytania grafowe (Graph Queries) operują na *strukturze danych* reprezentowanej jako graf – węzłach (encjiach) i krawędziach (relacjach). Użytkownik definiuje konkretne relacje między encjami, które mają być wyszukane. 
+
+**Krótko:**
+
+*   **Semantyczne:** Rozumie *co* użytkownik chce znaleźć.
+*   **Grafowe:** Szuka *konkretnych połączeń* w grafie danych.
+",85,32.45,"**Odpowiedź z Grafu Neo4j**
+
+Wyszukiwanie semantyczne i zapytania grafowe różnią się sposobem działania i zastosowania. Wyszukiwanie semantyczne jest lepsze przy podobieństwie treści dokumentów oraz znajduje fragmenty tekstu podobne znaczeniowo, wykorzystując wektory osadzeń embeddings. Dodatkowo, wyszukiwanie semantyczne używa wektorów osadzeń embeddings. Z kolei zapytania grafowe nawigują strukturę relacji w grafie i odpowiadają na pytania wielopoziomowe o relacje, a także są dokładniejsze przy złożonych relacjach między encjami.","wyszukiwanie semantyczne | JEST_LEPSZE_PRZY | podobieństwo treści dokumentów
+zapytania grafowe | NAWIGUJA | strukturę relacji w grafie
+Neo4j | STOSOWANY_W | bioinformatyka analiza sieci białkowych
+zapytania grafowe | ODPOWIADAJA_NA | pytania wielopoziomowe o relacje
+graf wiedzy | ZAWIERA | encje i relacje semantyczne
+ekstrakcja trójek | PRODUKUJE | format Podmiot Relacja Obiekt
+wyszukiwanie semantyczne | UZYWA | wektory osadzeń embeddings
+wyszukiwanie semantyczne | ZNAJDUJE | fragmenty tekstu podobne znaczeniowo
+RAG | LACZY | mechanizm wyszukiwania wiedzy
+RAG | UMOZLIWIA_DOSTEP_DO | aktualne informacje zewnętrzne
+zapytania grafowe | SA_DOKLADNIEJSZE_PRZY | złożone relacje między encjami",88,90,0.364,30.69,"**Odpowiedź z RAG Wektorowego**
+
+Wyszukiwanie semantyczne i zapytania grafowe różnią się sposobem działania i zastosowania. Wyszukiwanie semantyczne jest lepsze przy podobieństwie treści dokumentów oraz znajduje fragmenty tekstu podobne znaczeniowo, wykorzystując wektory osadzeń embeddings. Z kolei zapytania grafowe są dokładniejsze przy złożonych relacjach między encjami i nawigują strukturę relacji w grafie.","wyszukiwanie semantyczne | JEST_LEPSZE_PRZY | podobieństwo treści dokumentów
+zapytania grafowe | SA_DOKLADNIEJSZE_PRZY | złożone relacje między encjami
+grafowa baza danych | JEST_WYDAJNIEJSZA_NIZ | relacyjna baza danych
+wyszukiwanie semantyczne | UZYWA | wektory osadzeń embeddings
+zapytania grafowe | NAWIGUJA | strukturę relacji w grafie
+RAG | LACZY | mechanizm wyszukiwania wiedzy
+wyszukiwanie semantyczne | ZNAJDUJE | fragmenty tekstu podobne znaczeniowo
+graf wiedzy | UMOZLIWIA | rozumienie kontekstu i semantyki przez maszyny
+graf wiedzy | ZAWIERA | encje i relacje semantyczne
+Cypher | UMOZLIWIA | dopasowywanie wzorców grafowych",100,90,0.3,18.71,OK
+9,metryki,Co to jest faithfulness w ewaluacji systemów RAG?,"Faithfulness (wierność) to metryka mierząca, w jakim stopniu wygenerowana odpowiedź bazuje wyłącznie na dostarczonym kontekście, bez dodawania informacji spoza niego. Wysoka faithfulness oznacza, że model nie halucynuje i opiera się na faktach z bazy wiedzy.","**Faithfulness (wierność)** w kontekście ewaluacji systemów RAG (Retrieval-Augmented Generation) odnosi się do tego, czy generowane odpowiedzi są **rzeczywiście oparte na pobranych dokumentach**, a nie zawierają halucynacji lub informacji z innych źródeł. 
+
+Mierzy stopień, w jakim odpowiedź systemu jest *uzasadniona* przez kontekst (pobrane dokumenty). Wysoka faithfulness oznacza, że system generuje odpowiedzi, które można bezpośrednio prześledzić do dostarczonych dowodów. Niska faithfulness wskazuje na tendencję do wymyślania informacji lub ignorowania pobranego kontekstu.
+
+Krótko mówiąc: **czy odpowiedź jest zgodna z tym, co system znalazł w dokumentach?**
+",95,33.37,"**Odpowiedź z Grafu Neo4j**
+
+Faithfulness jest metryką ewaluacji systemów RAG i stosowana jest w ich ewaluacji. Jej skala wynosi od 0 do 100 procent. Wysoki wynik faithfulness oznacza brak halucynacji w odpowiedziach generowanych przez RAG, natomiast niski wynik wskazuje na to, że odpowiedź wychodzi poza dostarczone fakty. Faithfulness mierzy stopień bazowania odpowiedzi na kontekście.","RAG | POBIERA | fakty z bazy danych przed odpowiedzią
+RAG | ROZWIAZUJE_OGRANICZENIE | stała data graniczna wiedzy
+RAG | REDUKUJE | halucynacje modelu
+Neo4j | STOSOWANY_W | systemy rekomendacji produktów
+wyszukiwanie semantyczne | ZNAJDUJE | fragmenty tekstu podobne znaczeniowo
+Neo4j | STOSOWANY_W | systemy RAG
+RAG | LACZY | mechanizm wyszukiwania wiedzy
+RAG | UMOZLIWIA_DOSTEP_DO | aktualne informacje zewnętrzne
+faithfulness | SKALA | 0 do 100 procent
+faithfulness | WYSOKI_WYNIK_OZNACZA | brak halucynacji w odpowiedzi RAG
+RAG | JEST_SKROTEM_OD | Retrieval-Augmented Generation
+faithfulness | JEST | metryka ewaluacji systemów RAG
+faithfulness | STOSOWANA_W | ewaluacja systemów RAG
+faithfulness | MIERZY | stopień bazowania odpowiedzi na kontekście
+graf wiedzy | STOSOWANY_W | systemy RAG
+RAG | DOLACZA_DO | prompt kontekst z bazy wiedzy
+RAG | LACZY | model językowy LLM
+faithfulness | NISKI_WYNIK_OZNACZA | odpowiedź wychodzi poza dostarczone fakty
+graf wiedzy | ZASTEPUJE | klasyczne wektorowe bazy dokumentów w RAG",100,85,0.211,21.61,"**Odpowiedź z RAG Wektorowego**
+
+Faithfulness jest metryką ewaluacji systemów RAG i stosowana jest w ich ocenie. Mierzy ona stopień bazowania odpowiedzi na kontekście. Wysoki wynik faithfulness oznacza brak halucynacji w odpowiedziach generowanych przez systemy RAG, natomiast niski wynik wskazuje, że odpowiedź wychodzi poza dostarczone fakty. Skala tej metryki wynosi od 0 do 100 procent.","faithfulness | STOSOWANA_W | ewaluacja systemów RAG
+faithfulness | JEST | metryka ewaluacji systemów RAG
+faithfulness | WYSOKI_WYNIK_OZNACZA | brak halucynacji w odpowiedzi RAG
+faithfulness | MIERZY | stopień bazowania odpowiedzi na kontekście
+faithfulness | SKALA | 0 do 100 procent
+graf wiedzy | STOSOWANY_W | systemy RAG
+faithfulness | NISKI_WYNIK_OZNACZA | odpowiedź wychodzi poza dostarczone fakty
+RAG | JEST_SKROTEM_OD | Retrieval-Augmented Generation
+Neo4j | STOSOWANY_W | systemy RAG
+RAG | LACZY | mechanizm wyszukiwania wiedzy",100,90,0.4,19.43,OK
+10,zastosowania,Jakie są główne zastosowania Neo4j jako bazy danych?,"Neo4j jest stosowany w wykrywaniu oszustw finansowych, systemach rekomendacji, zarządzaniu tożsamością i dostępem, analizie sieci społecznych, zarządzaniu wiedzą korporacyjną, systemach RAG oraz w bioinformatyce do analizy sieci białkowych.","Neo4j to grafowa baza danych, idealna do zastosowań, gdzie relacje między danymi są równie ważne co same dane. Główne obszary wykorzystania to:
+
+*   **Sieci społecznościowe:** Modelowanie powiązań użytkowników, znajomych, grup itp.
+*   **Systemy rekomendacji:** Sugerowanie produktów, treści lub połączeń na podstawie relacji i preferencji.
+*   **Wykrywanie oszustw:** Identyfikacja podejrzanych wzorców w transakcjach finansowych lub zachowaniach użytkowników.
+*   **Zarządzanie wiedzą:** Reprezentacja powiązań między koncepcjami, dokumentami i ekspertami.
+*   **Łańcuchy dostaw:** Śledzenie przepływu towarów i identyfikacja wąskich gardeł.
+*   **Grafy ontologiczne:** Modelowanie złożonych dziedzin wiedzy (np. medycyny, biologii).
+*   **Master Data Management (MDM):** Utrzymywanie spójnej reprezentacji kluczowych danych biznesowych i ich relacji.
+
+Krótko mówiąc: wszędzie tam, gdzie liczą się *powiązania*.
+",85,51.27,"**Odpowiedź z Grafu Neo4j**
+
+Neo4j znajduje zastosowanie w wielu obszarach. Jest wykorzystywany do wykrywania oszustw finansowych oraz analizy sieci białkowych w bioinformatyce. Dodatkowo, Neo4j służy w systemach rekomendacji produktów, analizie sieci społecznych, zarządzaniu wiedzą korporacyjną i zarządzaniu tożsamością i dostępem. Neo4j jest również używany w systemach RAG (Retrieval-Augmented Generation). Baza danych ta wykorzystuje język Cypher do filtrowania danych w grafie, a sama jest natywną bazą grafową.","RAG | POBIERA | fakty z bazy danych przed odpowiedzią
+grafowa baza danych | UMOZLIWIA | szybkie przechodzenie po relacjach
+Neo4j | STOSOWANY_W | wykrywanie oszustw finansowych
+grafowa baza danych | SKLADA_SIE_Z | węzły i relacje
+ekstrakcja trójek | WYNIK_ZAPISYWANY_DO | grafowa baza danych
+Neo4j | STOSOWANY_W | systemy rekomendacji produktów
+Neo4j | JEST | natywna grafowa baza danych
+Cypher | UMOZLIWIA | filtrowanie danych w grafie
+relacyjna baza danych | MA_STALY | schemat tabel
+grafowa baza danych | NIE_WYMAGA | operacje JOIN
+Neo4j | STOSOWANY_W | bioinformatyka analiza sieci białkowych
+grafowa baza danych | PRZECHOWUJE | węzły i relacje z właściwościami
+relacyjna baza danych | WYMAGA | kosztowne operacje JOIN
+Neo4j | STOSOWANY_W | systemy RAG
+grafowa baza danych | OFERUJE | elastyczny schemat danych
+grafowa baza danych | JEST_WYDAJNIEJSZA_NIZ | relacyjna baza danych
+Neo4j | UZYWA_JEZYKA | Cypher
+Neo4j | STOSOWANY_W | analiza sieci społecznych
+Cypher | JEST_JEZYKIEM_ZAPYTAN_DLA | Neo4j
+RAG | DOLACZA_DO | prompt kontekst z bazy wiedzy
+Neo4j | STOSOWANY_W | zarządzanie wiedzą korporacyjną
+Neo4j | STOSOWANY_W | zarządzanie tożsamością i dostępem
+graf wiedzy | ZASTEPUJE | klasyczne wektorowe bazy dokumentów w RAG",100,95,0.13,31.22,"**Odpowiedź z RAG Wektorowego**
+
+Neo4j jest natywną grafową bazą danych i znajduje zastosowanie w wielu obszarach. Wykorzystywany jest do zarządzania tożsamością i dostępem, a także do zarządzania wiedzą korporacyjną. Ponadto, Neo4j służy w analizie sieci społecznych oraz bioinformatyce, konkretnie w analizie sieci białkowych. Baza danych ta przydatna jest również w systemach rekomendacji produktów, systemach RAG oraz wykrywaniu oszustw finansowych. Grafowa baza danych, jaką jest Neo4j, przechowuje węzły i relacje z właściwościami, co umożliwia jej efektywne działanie w wymienionych zastosowaniach. Używa języka Cypher do operacji na danych.","Neo4j | STOSOWANY_W | zarządzanie tożsamością i dostępem
+Neo4j | JEST | natywna grafowa baza danych
+Neo4j | STOSOWANY_W | zarządzanie wiedzą korporacyjną
+Neo4j | STOSOWANY_W | analiza sieci społecznych
+Neo4j | STOSOWANY_W | bioinformatyka analiza sieci białkowych
+Neo4j | STOSOWANY_W | systemy rekomendacji produktów
+Neo4j | STOSOWANY_W | systemy RAG
+Neo4j | STOSOWANY_W | wykrywanie oszustw finansowych
+Neo4j | UZYWA_JEZYKA | Cypher
+grafowa baza danych | PRZECHOWUJE | węzły i relacje z właściwościami",100,95,0.3,32.76,OK

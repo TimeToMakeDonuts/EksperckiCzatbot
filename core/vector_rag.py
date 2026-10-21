@@ -5,7 +5,7 @@ from llama_index.core.retrievers import VectorIndexRetriever
 
 from core import llm_engine
 from core.logger import get_logger
-from core.graph_rag import _deduplicate_sentences
+from core.graph_rag import postprocess_answer
 
 logger = get_logger(__name__)
 
@@ -74,7 +74,8 @@ def get_vector_rag_response(prompt: str) -> dict[str, str]:
     #   1. sprawdź, czy indeks jest zbudowany,
     #   2. znajdź 10 trójek najbardziej podobnych znaczeniowo do pytania
     #      (podobieństwo kosinusowe embeddingów),
-    #   3. wygeneruj odpowiedź modelem na podstawie tych trójek.
+    #   3. wygeneruj odpowiedź modelem na podstawie tych trójek,
+    #   4. oczyść odpowiedź tym samym przetwarzaniem końcowym co w Graph RAG.
     # Zawsze zwraca słownik z kluczami "answer" i "context".
     if _vector_index is None:
         return {
@@ -130,7 +131,7 @@ def get_vector_rag_response(prompt: str) -> dict[str, str]:
 
     try:
         raw = llm_engine.llm.complete(answer_prompt).text.strip()
-        answer = _deduplicate_sentences(raw)
+        answer = postprocess_answer(raw)
         return {
             "answer": f"**Odpowiedź z RAG Wektorowego**\n\n{answer}",
             "context": context,

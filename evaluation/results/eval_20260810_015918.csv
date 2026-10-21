@@ -1,0 +1,400 @@
+﻿id,kategoria,pytanie,ground_truth,odpowiedz_llm,poprawnosc_llm,czas_llm_s,odpowiedz_rag,kontekst_rag,faithfulness_rag,poprawnosc_rag,citation_precision_rag,czas_rag_s,odpowiedz_vec,kontekst_vec,faithfulness_vec,poprawnosc_vec,citation_precision_vec,czas_vec_s,klasyfikacja_bledu
+1,ogólne,Kiedy i gdzie została założona firma Zorbex S.A.?,"Zorbex S.A. została założona w 2019 roku. Siedziba firmy mieści się przy ul. Mieszka I 17, 62-200 Gniezno.","Firma Zorbex S.A. została założona 1 stycznia 1997 roku w Krakowie, Polska.",30,4.22,"**Odpowiedź z Grafu Neo4j**
+
+Firma Zorbex S.A. została założona w roku 2019 i ma swoją siedzibę ul. Mieszka I 17, 62-200 Gniezno. Jest to spółka akcyjna, która specjalizuje się w rolniczych technologii precyzyjnych AgriTech. Zorbex S.A. jest notowana na GPW od 2022 roku i ma swoje oddziały w Gdańsku, Gnieznie oraz Wrocławiu. Firma zatrudnia obecnie 234 pracowników. W 2023 r. firma osiągnęła przychód wynoszący 47.3 mln PLN, co oznacza wzrost o 55% w porównaniu do roku poprzedniego. jest również innowatorem, zdobywając m.in. AgriTech Innovation Award 2022 oraz Gazelę Biznesu Dolina Krzemowa Agro 2023.","Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | NIP | 7842390156
+Henryk Dlubak | BYL_PREZESEM | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Agrogospodarstwo Sadlocha i Mroz | JEST_KLIENTEM | Zorbex S.A.
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Kwas Grid | JEST_PLATFORMA_SERWEROWA | Zorbex S.A.
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Radoslaw Trabka | KIERUJE_DZIALEM | Badania i Rozwoj R&D Zorbex S.A.
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby
+SoilMind Pro 3.0 | MIERZY | temperature gleby
+SoilMind Pro 3.0 | MIERZY | pH gleby
+SoilMind Pro 3.0 | MIERZY | przewodnosc elektryczna gleby
+SoilMind Pro 3.0 | PROTOKOL_KOMUNIKACJI | LoRaWAN
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | CZAS_PRACY_BATERII_LAT | 7
+Henryk Dlubak | KIEROWAL_W_LATACH | 2019-2021",91,90,0.189,2.63,"**Odpowiedź z RAG Wektorowego**
+
+Firma Zorbex S.A. została założona w roku 2019. Jej siedzibą jest ulica Mieszka I 17, 62-200 Gniezno. Firma ta jest spółką akcyjną. W jej oddziale centralnej RD działa Zuzanna Prochownik jako CFO oraz Tomasz Bledowski jako CTO. ZorbScript jest językiem programowaniem używanym przez firmę. Fundacja Przyszłość Rolnictwa inwestuje w Zorbex S.A. Od 2022 roku firma jest notowana na NewConnect GPW.","Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | NIP | 7842390156
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022",100,85,0.6,1.2,OK
+2,zarząd,Kto jest obecnym Prezesem Zarządu Zorbex S.A. i od kiedy pełni tę funkcję?,"Prezesem Zarządu (CEO) Zorbex S.A. jest Marta Klejnot-Wasiak, która piastuje to stanowisko od 2021 roku. Wcześniej firmą kierował Henryk Dłubak (2019–2021).",Obecnym Prezesem Zarządu Zorbex S.A. jest Piotr Nowakowski. Pełni tę funkcję od 1 stycznia 2020 roku.,30,2.38,"**Odpowiedź z Grafu Neo4j**
+
+Obecnym Prezesem Zarządu Zorbex S.A. jest Marta Klejnot-Wasiak. Pełni tę funkcję od roku 2021, gdy zaczęła pełnić funkcje zarządzające w spółce.","Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | NIP | 7842390156
+Henryk Dlubak | BYL_PREZESEM | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Agrogospodarstwo Sadlocha i Mroz | JEST_KLIENTEM | Zorbex S.A.
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+Marta Klejnot-Wasiak | PELNI_FUNKCJE_OD | 2021
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Kwas Grid | JEST_PLATFORMA_SERWEROWA | Zorbex S.A.
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Radoslaw Trabka | KIERUJE_DZIALEM | Badania i Rozwoj R&D Zorbex S.A.
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby
+SoilMind Pro 3.0 | MIERZY | temperature gleby
+SoilMind Pro 3.0 | MIERZY | pH gleby
+SoilMind Pro 3.0 | MIERZY | przewodnosc elektryczna gleby
+SoilMind Pro 3.0 | PROTOKOL_KOMUNIKACJI | LoRaWAN
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | CZAS_PRACY_BATERII_LAT | 7
+Henryk Dlubak | KIEROWAL_W_LATACH | 2019-2021",100,90,0.079,1.08,"**Odpowiedź z RAG Wektorowego**
+
+Obecnym Prezesem Zarządu Zorbex S.A. jest Marta Klejnot-Wasiak. Pełni tę funkcję od momentu powstania spółki, która datuje się z roku 2019.","Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Henryk Dlubak | BYL_PREZESEM | Zorbex S.A.
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Radoslaw Trabka | KIERUJE_DZIALEM | Badania i Rozwoj R&D Zorbex S.A.
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | NIP | 7842390156",50,70,0.2,0.78,OK
+3,produkt,Jakie parametry techniczne ma czujnik SoilMind Pro 3.0 i ile kosztuje?,"SoilMind Pro 3.0 mierzy jednocześnie wilgotność, temperaturę, pH i przewodność elektryczną gleby. Komunikuje się przez LoRaWAN na zasięgu 2,4 km. Cena wynosi 1 890 PLN netto. Pobór mocy to 0,3 W, a czas pracy na baterii to 7 lat. Czujnik posiada stopień ochrony IP68 i certyfikat CE 2024/53/UE.","Czujnik SoilMind Pro 3.0 oferuje następujące parametry techniczne:
+
+1. Sensoryczność: Czujnik jest w stanie wykryć różnice w wilgotności i temperaturze gleby, co pozwala na dokładniejsze monitorowanie warunków środowiska roślinnego.
+
+2. Aktywność: Czujnik działa przez dłuższy czas, nawet do 3 lat, zależnie od warunków środowiskowych i ustawień użytkownika.
+
+3. Zasięg: Dzięki swojej konstrukcji czujnik może być umieszczony na głębszych poziomach gleby, co pozwala na bardziej dokładne monitorowanie warunków pod powierzchnią ziemi.
+
+4. Przepustowość: Czujnik jest wyposażony w przeciwskorodującą membranę, która chroni przed zanieczyszczeniami i uszkodzeniem urządzenia.
+
+5. Wymiary: Rozmiar czujnika to 50 x 50 x 10 mm (długość x szerokość x wysokość).
+
+Czujnik SoilMind Pro 3.0 kosztuje około 150 złotych, zależnie od dostawcy i lokalnych cen.",60,4.05,"**Odpowiedź z Grafu Neo4j**
+
+Czujnik SoilMind Pro 3.0 ma następujące parametry techniczne: - Stopień ochrony: IP68 - Protokół komunikacji: LoRaWAN - Zasięg komunikacji: 2,4 km - Mierzy: przewodność elektryczna gleby, pH gleby, temperaturę gleby, wilgotność gleby - Cena netto w PLN: 1890 Brak informacji o liczbie czujników SoilMind Pro 3.0 używanych przez Kooperatywę Zbozową Podlasie.","SoilMind Pro 3.0 | CHRONIONY_PATENTEM | PL-2021-00847
+Kooperatywa Zbozowa Podlasie | UZYWA | 340 czujnikow SoilMind Pro 3.0
+SoilMind Pro 3.0 | STOPIEN_OCHRONY | IP68
+SoilMind Pro 3.0 | PROTOKOL_KOMUNIKACJI | LoRaWAN
+Kwas Grid | OBSLUGUJE | telemetria czujnikow SoilMind w czasie rzeczywistym
+SoilMind Pro 3.0 | MIERZY | przewodnosc elektryczna gleby
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | MIERZY | pH gleby
+SoilMind Pro 3.0 | MIERZY | temperature gleby
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+ZorbScript | PRZEZNACZONY_DO | konfiguracji czujnikow SoilMind
+SoilMind Pro 3.0 | CERTYFIKAT | CE 2024/53/UE
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | CZAS_PRACY_BATERII_LAT | 7
+SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+ZorbScript | STWORZONY_PRZEZ | Tomasz Bledowski
+ZorbScript | BAZUJE_NA | Python 3.11
+ZorbScript | ROZSZERZENIE_PLIKOW | .zbs
+Kwas Grid | JEST_PLATFORMA_SERWEROWA | Zorbex S.A.
+Kwas Grid | CENTRUM_DANYCH_W | ul. Przemyslowa 44, Rybnik
+Kwas Grid | POJEMNOSC_RDZENI | 1200
+Kwas Grid | SZYFROWANIE | AES-256-GCM
+Kooperatywa Zbozowa Podlasie | SIEDZIBA | Bialystok
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.",100,90,0.269,1.64,"**Odpowiedź z RAG Wektorowego**
+
+Czujnik SoilMind Pro 3.0 ma następujące parametry techniczne: - Wilgotność gleby: MIERZY - Temperatura gleby: MIERZY - Przewodnosc elektryczna gleby: MIERZY - pH gleby: MIERZY Czujnik kosztuje 1890 zł netto. Ważne informacje: - Zasieg komunikacji: 2.4 km - Czas pracy baterii lat: 7 - Stopień ochrony: IP68 - Producent: Zorbex S.A.","SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby
+SoilMind Pro 3.0 | MIERZY | temperature gleby
+SoilMind Pro 3.0 | MIERZY | przewodnosc elektryczna gleby
+SoilMind Pro 3.0 | MIERZY | pH gleby
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | CZAS_PRACY_BATERII_LAT | 7
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | STOPIEN_OCHRONY | IP68
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.",100,90,0.8,1.23,OK
+4,technologia,Co to jest ZorbScript i kto jest jego autorem?,"ZorbScript to wewnętrzny język programowania firmy Zorbex S.A., stworzony przez Tomasza Błędowskiego — Dyrektora Technicznego firmy. Bazuje na składni Pythona 3.11 i służy do konfiguracji czujników SoilMind. Pliki ZorbScript mają rozszerzenie .zbs.","ZorbScript to skrypt, który umożliwia tworzenie interaktywnych narracji dla gier tekstowych. Jego cechą charakterystyczną jest obsługa różnorodnych języków naturalnych, co pozwala na stworzenie bardziej naturalnej i zróżnicowanej rozmowy między graczem a postacią.
+
+ZorbScript został stworzony przez grupę programistów znanych jako ""Zorb Team"". Jest to zespół twórców, którzy pracują nad rozwojem tego skryptu i udostępniają go do użytku publicznego.",30,2.99,"**Odpowiedź z Grafu Neo4j**
+
+ZorbScript to język programowania, który został stworzony przez Tomasz Bledowskiego. Jego głównym celem jest obsługa konfiguracji czujników SoilMind. Zbiera się on na bazie Pythona 3.11 i pliki zapisuje w formacie .zbs.","ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+ZorbScript | STWORZONY_PRZEZ | Tomasz Bledowski
+ZorbScript | PRZEZNACZONY_DO | konfiguracji czujnikow SoilMind
+ZorbScript | ROZSZERZENIE_PLIKOW | .zbs
+ZorbScript | BAZUJE_NA | Python 3.11",100,90,0.4,0.78,"**Odpowiedź z RAG Wektorowego**
+
+ZorbScript to język programowania stworzony przez Tomasz Bledowskiego. Jego głównym celem jest obsługa różnorodnych zadań, takich jak rozszerzanie plików .zbs oraz integracja z innymi systemami. Z orbex S.A., która jest producentem tego języka programowania, potwierdza, że ZorbScript bazuje na Python 3.11 i ma zastosowanie w projekcie SoilMind Pro 3.0. Fundacja Przyszłości Rolnictwa jest inwestorem Zorbex S.A., co podkreśla znaczenie języka programowania dla przyszłości rolnictwa. Tomasz Bledowski pełni funkcję CTO (Chief Technology Officer) w Zorbex S.A., a Zuzanna Prochownik jako CFO (Chief Financial Officer). Wszystkie te informacje wskazują na znaczenie i zastosowanie ZorbScript, który jest językiem programowania rozwijanym przez Tomasz Bledowskiego.","ZorbScript | STWORZONY_PRZEZ | Tomasz Bledowski
+ZorbScript | ROZSZERZENIE_PLIKOW | .zbs
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+ZorbScript | BAZUJE_NA | Python 3.11
+ZorbScript | PRZEZNACZONY_DO | konfiguracji czujnikow SoilMind
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | NIP | 7842390156
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.",100,85,0.7,1.88,OK
+5,finanse,Jakie były przychody Zorbex S.A. w 2022 i 2023 roku oraz jaka była EBITDA za 2023?,"W 2022 roku Zorbex S.A. osiągnęła przychód 31,7 miliona PLN. W 2023 roku przychód wzrósł do 47,3 miliona PLN. EBITDA za rok 2023 wyniosła 8,9 miliona PLN. Roczny raport za 2023 oznaczony jest kodem ZOR-2023-A.","W 2022 roku przychody Zorbex S.A. nie są dostępne, ponieważ firma ta zaczęła swoją działalność dopiero w tym roku. Dzięki temu nie ma danych dotyczących przychodów za poprzedni rok.
+
+Za 2023 roku, według informacji dostępnych na stronie internetowej firmy, przychody Zorbex S.A. wyniosły 1,5 mln złotych. EBITDA (Earnings Before Interest, Taxes, Depreciation and Amortization) to wynik operacyjny przed zaległościami podatkowymi, kosztami zakupu nieruchomości i amortyzacją wartości intelektualnej. W przypadku Zorbex S.A. EBITDA za 2023 rok wyniósł 1,2 mln złotych.",30,3.28,"**Odpowiedź z Grafu Neo4j**
+
+Przychody Zorbex S.A. w 2022 roku wynosiły 31,7 mln PLN, a w 2023 roku wzrosły do 47,3 mln PLN. EBITDA za 2023 rok wyniosła 8,9 mln PLN.","Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3",100,95,0.125,0.84,"**Odpowiedź z RAG Wektorowego**
+
+Zorbex S.A. osiągnęła przychody wynoszące 31,7 mln PLN w roku 2022. W 2023 roku przychody spadły do 47,3 mln PLN. EBITDA Zorbex S.A. za rok 2023 wynosi 8,9 mln PLN. Brak informacji o EBITDA za 2022 rok w bazie danych.","Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022",50,85,0.1,1.11,OK
+6,własność_intelektualna,Czego dotyczy patent PL-2021-00847 i gdzie jest zarejestrowany?,"Patent PL-2021-00847 dotyczy algorytmu kalibracji czujnika o nazwie SoilMind Core, będącego rdzeniem technologicznym produktu SoilMind Pro 3.0. Patent jest zarejestrowany w Urzędzie Patentowym Rzeczypospolitej Polskiej.","Patent PL-2021-00847 dotyczy technologii ochrony danych, w szczególności systemu ochrony danych na urządzeniach mobilnych. System ten ma na celu chronienie danych osobowych przed nieuprawnionym dostępem i modyfikacjami.
+
+Patent został zarejestrowany przez Instytut Badań Operacyjnych Polskiej Akademii Nauk (IB PAN) w dniu 18 lutego 2021 roku.",30,2.76,"**Odpowiedź z Grafu Neo4j**
+
+Patent PL-2021-00847 dotyczy algorytmu kalibracji SoilMind Core, który jest częścią produktu SoilMind Pro 3.0. Ten patent został zarejestrowany w Urzędzie Patentowym Rzeczypospolitej Polskiej. SoilMind Pro 3.0 to produkt firmy Zorbex S.A., który mierzy wilgotność, temperaturę, pH oraz przewodność elektryczną gleby. Komunikacja protokołem LoRaWAN odbywa się w zakresie 2.4 KM. Cena netto wynosi 1890 PLN, a pojemność baterii to 7 lat.","SoilMind Pro 3.0 | CHRONIONY_PATENTEM | PL-2021-00847
+PL-2021-00847 | ZAREJESTROWANY_W | Urzad Patentowy Rzeczypospolitej Polskiej
+PL-2021-00847 | PATENT_NA | algorytm kalibracji SoilMind Core
+SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby
+SoilMind Pro 3.0 | MIERZY | temperature gleby
+SoilMind Pro 3.0 | MIERZY | pH gleby
+SoilMind Pro 3.0 | MIERZY | przewodnosc elektryczna gleby
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+SoilMind Pro 3.0 | PROTOKOL_KOMUNIKACJI | LoRaWAN
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | CZAS_PRACY_BATERII_LAT | 7",100,85,0.846,1.51,"**Odpowiedź z RAG Wektorowego**
+
+Patent PL-2021-00847 dotyczy algorytmu kalibracji SoilMind Core. Jest zarejestrowany w Urzadzie Patentowym Rzeczypospolitej Polskiej. SoilMind Pro 3.0, który jest produktem firmy Zorbex S.A., ma na swoim chronionym stopniu patent PL-2021-00847. Ma ochronę IP68 oraz posiada certyfikat CE 2024/53/UE. Jego cena netto wynosi 1890 złotych. W SoilMind Pro 3.0 zastosowano szyfrowanie AES-256-GCM, a jego pojemność mocy to 0.3. Zorbex S.A. posiada NIP 7842390156.","PL-2021-00847 | ZAREJESTROWANY_W | Urzad Patentowy Rzeczypospolitej Polskiej
+PL-2021-00847 | PATENT_NA | algorytm kalibracji SoilMind Core
+SoilMind Pro 3.0 | CHRONIONY_PATENTEM | PL-2021-00847
+SoilMind Pro 3.0 | STOPIEN_OCHRONY | IP68
+SoilMind Pro 3.0 | CERTYFIKAT | CE 2024/53/UE
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+Kwas Grid | SZYFROWANIE | AES-256-GCM
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+Zorbex S.A. | NIP | 7842390156",100,85,1.0,1.4,OK
+7,klienci,Jacy są główni klienci Zorbex S.A. i jak korzystają z jej produktów?,"Największym klientem jest Kooperatywa Zbożowa Podlasie z siedzibą w Białymstoku, która wdrożyła 340 czujników SoilMind Pro 3.0 na swoich polach. Drugim kluczowym klientem jest Agrogospodarstwo Sadłocha i Mróz z Zamościa, zarządzające 8 400 hektarami gruntów rolnych.","Głównymi klientami Zorbex S.A. są przedsiębiorstwa, instytucje finansowe oraz osoby fizyczne. Korzystają one z oferowanych przez nas produktów w różnych sektorach działalności, takich jak: handel detaliczny, usługi finansowe, transport i logistyka, budownictwo czy turystyka. Produkty Zorbex S.A. są wykorzystywane do obsługi potrzeb płatności elektronicznych, zarządzania płynnościami oraz rozliczeń w różnych branżach.",10,2.93,"**Odpowiedź z Grafu Neo4j**
+
+Główni klienci Zorbex S.A. to Agrogospodarstwo Sadlocha i Mroz oraz Kooperatywa Zbozowa Podlasie. Agrogospodarstwo Sadlocha i Mroz korzysta z rolniczych technologii precyzyjnych AgriTech, które oferowane są przez Zorbex S.A., a Kooperatywa Zbozowa Podlasie korzysta z platformy serwerowej Kwas Grid. Obie firmy inwestują w rozwój swojej działalności i współpracują z innymi przedsiębiorstwami, aby osiągnąć efektywność i efektywność w swoich procesach produkcji.","Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | NIP | 7842390156
+Henryk Dlubak | BYL_PREZESEM | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Agrogospodarstwo Sadlocha i Mroz | JEST_KLIENTEM | Zorbex S.A.
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Kwas Grid | JEST_PLATFORMA_SERWEROWA | Zorbex S.A.
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Radoslaw Trabka | KIERUJE_DZIALEM | Badania i Rozwoj R&D Zorbex S.A.
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby
+SoilMind Pro 3.0 | MIERZY | temperature gleby
+SoilMind Pro 3.0 | MIERZY | pH gleby
+SoilMind Pro 3.0 | MIERZY | przewodnosc elektryczna gleby
+SoilMind Pro 3.0 | PROTOKOL_KOMUNIKACJI | LoRaWAN
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | CZAS_PRACY_BATERII_LAT | 7
+Henryk Dlubak | KIEROWAL_W_LATACH | 2019-2021",67,85,0.108,1.7,"**Odpowiedź z RAG Wektorowego**
+
+Głównymi klientami Zorbex S.A. są Agrogospodarstwo Sadlocha i Mroz oraz Kooperatywa Zbozowa Podlasie. Obie te firmy korzystają z produktów i usług Zorbex S.A., mianowicie rolniczych technologii precyzyjnych AgriTech. To pomaga im poprawić efektywność swoich działalności oraz oszczędza czas i zasoby.","Agrogospodarstwo Sadlocha i Mroz | JEST_KLIENTEM | Zorbex S.A.
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | NIP | 7842390156
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.",67,90,0.2,1.08,OK
+8,infrastruktura,Co to jest platforma Kwas Grid i gdzie mieści się jej centrum danych?,Kwas Grid to własna platforma serwerowa Zorbex S.A. Centrum danych znajduje się przy ul. Przemysłowej 44 w Rybniku i dysponuje pojemnością 1 200 rdzeni obliczeniowych. Dane są szyfrowane algorytmem AES-256-GCM. Platforma obsługuje telemetrię ze wszystkich wdrożonych czujników SoilMind.,"Platforma Kwas Grid to nowoczesna architektura blockchainowa, która umożliwia bezpieczne przechowywanie i przetwarzanie danych. Jej centrum danych znajduje się w Stanach Zjednoczonych, w stanie Georgia.",40,2.48,"**Odpowiedź z Grafu Neo4j**
+
+Platforma Kwas Grid to platforma serwerowa zainicjowana przez Zorbex S.A., która oferuje usługi telemetrii czujników SoilMind w czasie rzeczywistym. Centrum danych Kwas Grid mieści się przy ulicy Przemysłowej 44, Rybnik. Platforma ma pojemność rdzeniową 1200.","Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Kwas Grid | OBSLUGUJE | telemetria czujnikow SoilMind w czasie rzeczywistym
+Kwas Grid | SZYFROWANIE | AES-256-GCM
+Kwas Grid | JEST_PLATFORMA_SERWEROWA | Zorbex S.A.
+Kwas Grid | CENTRUM_DANYCH_W | ul. Przemyslowa 44, Rybnik
+Kwas Grid | POJEMNOSC_RDZENI | 1200",100,90,0.5,0.83,"**Odpowiedź z RAG Wektorowego**
+
+Platforma Kwas Grid jest platformą serwowania JEST (Just Enough Security Technology) opracowaną przez Zorbex S.A. Jej centrum danych mieści się w ulicy Przemysłowej 44, w Rybniku.","Kwas Grid | JEST_PLATFORMA_SERWEROWA | Zorbex S.A.
+Kwas Grid | SZYFROWANIE | AES-256-GCM
+Kwas Grid | CENTRUM_DANYCH_W | ul. Przemyslowa 44, Rybnik
+Kwas Grid | OBSLUGUJE | telemetria czujnikow SoilMind w czasie rzeczywistym
+Kwas Grid | POJEMNOSC_RDZENI | 1200
+SoilMind Pro 3.0 | MIERZY | pH gleby
+Agrogospodarstwo Sadlocha i Mroz | SIEDZIBA | Zamosc
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby",100,80,0.2,0.71,OK
+9,finanse,Kto jest głównym inwestorem Zorbex S.A. i jakie wsparcie finansowe firma otrzymała?,"Głównym inwestorem instytucjonalnym jest Fundacja Przyszłości Rolnictwa, która w 2020 roku udzieliła Zorbex S.A. grantu w wysokości 12,4 miliona PLN na rozwój platformy SoilMind. Dodatkowo spółka jest notowana na rynku NewConnect GPW od 2022 roku.","Głównym inwestorem Zorbex S.A. był Fundusz Inwestycyjny PZU, który w 2017 roku zainwestował 10 mln złotych w firmę. Wsparcie finansowe Zorbex S.A. obejmuje m.in. wsparcie techniczne i ekspertyzę, a także dostęp do rynku finansowego poprzez PZU Bank.",40,2.67,"**Odpowiedź z Grafu Neo4j**
+
+Głównym inwestorem Zorbex S.A. jest Fundacja Przyszłości Rolnictwa, która jest jednym z głównych inwestorów firmy. W roku 2022 firma otrzymała wsparcie finansowe w wysokości 31,7 mln PLN.","Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | NIP | 7842390156
+Henryk Dlubak | BYL_PREZESEM | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Agrogospodarstwo Sadlocha i Mroz | JEST_KLIENTEM | Zorbex S.A.
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Kwas Grid | JEST_PLATFORMA_SERWEROWA | Zorbex S.A.
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Radoslaw Trabka | KIERUJE_DZIALEM | Badania i Rozwoj R&D Zorbex S.A.
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby
+SoilMind Pro 3.0 | MIERZY | temperature gleby
+SoilMind Pro 3.0 | MIERZY | pH gleby
+SoilMind Pro 3.0 | MIERZY | przewodnosc elektryczna gleby
+SoilMind Pro 3.0 | PROTOKOL_KOMUNIKACJI | LoRaWAN
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | CZAS_PRACY_BATERII_LAT | 7
+Henryk Dlubak | KIEROWAL_W_LATACH | 2019-2021",100,75,0.027,1.28,"**Odpowiedź z RAG Wektorowego**
+
+Głównym inwestorem Fundacji Przyszłości Rolnictwa jest Zorbex S.A. Ta fundacja została zarejestrowana jako główny inwestor w 2019 roku, kiedy to Zorbex S.A. została założona. Jeden z ważnych klientów Zorbex S.A. jest Kooperatywa Zbozowa Podlasie. Firma ma numer NIP 7842390156. Wsparcie finansowe Zorbex S.A. może być dostarczone przez różne źródła, w tym Agrogospodarstwo Sadlocha i Mroz. Językiem programowaniem używanym przez firmę jest ZorbScript. Tomasz Bledowski pełni funkcję CTO (Chief Technology Officer) a Marta Klejnot-Wasiak jest prezesem zarządu firmy. Zuzanna Prochownik zajmuje się finansami jako CFO (Chief Financial Officer). Wszystkie te informacje są związane z głównym inwestorem i wsparciem finansowym, które firma otrzymała.","Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.
+Zorbex S.A. | NIP | 7842390156
+Agrogospodarstwo Sadlocha i Mroz | JEST_KLIENTEM | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.",75,70,0.8,1.9,OK
+10,ogólne,Jakie nagrody zdobyła firma Zorbex S.A. i jaka jest struktura jej oddziałów?,"Zorbex S.A. otrzymała AgriTech Innovation Award 2022 oraz tytuł Gazeli Biznesu Dolina Krzemowa Agro 2023. Firma posiada trzy oddziały: centralę wraz z działem R&D w Gnieźnie, oddział produkcji elektroniki we Wrocławiu oraz oddział serwisu i logistyki w Gdańsku.","Firma Zorbex S.A. to polska spółka, która specjalizuje się w produkcji materiałów budowlanych oraz rozwiązań związanych z ochroną przeciwpożarową i izolacją termiczną. W 2019 roku firma zdobyła nagrodę ""Najlepszy Producent Materiałów Budowlanych"" na XXVII Edycji Nagrody Biznesu Polskiego Radia.
+
+Struktura oddziałów Zorbex S.A. obejmuje następujące jednostki:
+1. Oddział w Łodzi - główny zakład produkcyjny, odpowiedzialny za produkcję materiałów budowlanych i rozwiązań ochronnych.
+2. Oddział w Warszawie - zatrudnia się tu personel obsługujący klientów oraz obsługę sprzedaży.
+3. Oddział w Krakowie - siedziba firmy, gdzie znajdują się biura zarządzające i kierownictwo.
+
+Wszystkie oddziały są aktywne w produkcji materiałów budowlanych i rozwiązań ochronnych, dostarczając swoje produkty na rynki krajowe oraz międzynarodowe.",40,3.76,"**Odpowiedź z Grafu Neo4j**
+
+Firma Zorbex S.A. zdobyła wiele nagród, w tym AgriTech Innovation Award 2022 oraz Gazela Biznesu Dolina Krzemowa Agro 2023. Struktura jej oddziałów obejmuje centralę R&D w Gnieźnie i produkcję elektroniki w Wrocławiu. Zorbex S.A. ma swoją siedzibę w Gdansku, a także oddziały w Gnieźnie oraz w Wrocławiu. Firma jest notowana na GPW od 2022 roku pod symbolem ZOR. Struktura pracowników wynosi obecnie 234 osoby. osiągnęła przychód w wysokości 47,3 mln PLN w 2023 r., co stanowi wzrost o 8,9 mln PLN w porównaniu do roku poprzedniego. Firma ma swoje platformy serweryowe zwaną Kwas Grid. W 2019 roku Henryk Dlubak kierował działem w Zorbex S.A., a obecnie Tomasz Bledowski pełni tę funkcję. Zuzanna Prochownik jest CFO firmy. Marta Klejnot-Wasiak jest prezesem zarządu. oferuje rolnicze technologie precyzyjne AgriTech, w tym SoilMind Pro 3.0, który mierzy wilgotność gleby, temperaturę, pH, przewodność elektryczną oraz działa za pomocą protokołu LoRaWAN. Produkt kosztuje 1 890 PLN netto i ma pojemność energii baterii lat 7.","Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022
+Zorbex S.A. | ODDZIAL_SERWIS_LOGISTYKA | Gdansk
+Zorbex S.A. | NIP | 7842390156
+Henryk Dlubak | BYL_PREZESEM | Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Zorbex S.A. | PRZYCHOD_2022_MLN_PLN | 31.7
+Zorbex S.A. | BRANZA | rolnicze technologie precyzyjne AgriTech
+Agrogospodarstwo Sadlocha i Mroz | JEST_KLIENTEM | Zorbex S.A.
+Zorbex S.A. | ODDZIAL_CENTRALA_RD | Gniezno
+Kooperatywa Zbozowa Podlasie | JEST_KLIENTEM | Zorbex S.A.
+ZorbScript | JEST_JEZYKIEM_PROGRAMOWANIA | Zorbex S.A.
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zorbex S.A. | NOTOWANA_NA | NewConnect GPW od 2022
+Zorbex S.A. | ODDZIAL_PRODUKCJA_ELEKTRONIKI | Wroclaw
+Kwas Grid | JEST_PLATFORMA_SERWEROWA | Zorbex S.A.
+Zorbex S.A. | LICZBA_PRACOWNIKOW | 234
+Zorbex S.A. | KOD_RAPORTU_ROCZNEGO_2023 | ZOR-2023-A
+Fundacja Przyszlosci Rolnictwa | JEST_INWESTOREM | Zorbex S.A.
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Zorbex S.A. | EBITDA_2023_MLN_PLN | 8.9
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Radoslaw Trabka | KIERUJE_DZIALEM | Badania i Rozwoj R&D Zorbex S.A.
+Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | PRZYCHOD_2023_MLN_PLN | 47.3
+SoilMind Pro 3.0 | JEST_PRODUKTEM | Zorbex S.A.
+SoilMind Pro 3.0 | MIERZY | wilgotnosc gleby
+SoilMind Pro 3.0 | MIERZY | temperature gleby
+SoilMind Pro 3.0 | MIERZY | pH gleby
+SoilMind Pro 3.0 | MIERZY | przewodnosc elektryczna gleby
+SoilMind Pro 3.0 | PROTOKOL_KOMUNIKACJI | LoRaWAN
+SoilMind Pro 3.0 | ZASIEG_KOMUNIKACJI_KM | 2.4
+SoilMind Pro 3.0 | CENA_NETTO_PLN | 1890
+SoilMind Pro 3.0 | POBOR_MOCY_W | 0.3
+SoilMind Pro 3.0 | CZAS_PRACY_BATERII_LAT | 7
+Henryk Dlubak | KIEROWAL_W_LATACH | 2019-2021",82,85,0.514,3.42,"**Odpowiedź z RAG Wektorowego**
+
+Firma Zorbex S.A. zdobyła dwa nagrody: 1. AgriTech Innovation Award 2022, 2. Gazela Biznesu Dolina Krzemowa Agro 2023. Struktura jej oddziałów jest następująca: Radosław Trabka kieruje Badaniami i Rozwojem R&D w Zorbex S.A., a zarazem firma ma swoje siedziby na ul. Mieszka I 17, 62-200 Gniezno. Strukturą zarządu zajmuje się Marta Klejnot-Wasiak jako Prezes Zarządu. CFO Zorbex S.A. jest Zuzanną Prochownik. Tomasz Bledowski pełni funkcję CTO w firmie. NIP firmy to 7842390156.","Zorbex S.A. | SIEDZIBA | ul. Mieszka I 17, 62-200 Gniezno
+Zorbex S.A. | NAGRODA | AgriTech Innovation Award 2022
+Zorbex S.A. | FORMA_PRAWNA | spolka akcyjna
+Radoslaw Trabka | KIERUJE_DZIALEM | Badania i Rozwoj R&D Zorbex S.A.
+Zuzanna Prochownik | JEST_CFO | Zorbex S.A.
+Marta Klejnot-Wasiak | JEST_PREZESEM_ZARZADU | Zorbex S.A.
+Zorbex S.A. | ZALOZONO_W_ROKU | 2019
+Tomasz Bledowski | JEST_CTO | Zorbex S.A.
+Zorbex S.A. | NAGRODA | Gazela Biznesu Dolina Krzemowa Agro 2023
+Zorbex S.A. | NIP | 7842390156",100,85,0.6,1.53,OK

@@ -2,6 +2,10 @@ from llama_index.llms.openai_like import OpenAILike
 from llama_index.core import Settings
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
+from core.logger import get_logger
+
+logger = get_logger(__name__)
+
 # Globalne instancje modeli — współdzielone przez wszystkie moduły
 llm = None
 judge_llm = None        # oddzielny model oceniający (LLM-as-Judge); None = używa llm
@@ -75,5 +79,7 @@ def get_standard_llm_response(prompt: str) -> str:
     full_prompt = f"{system_prompt}Pytanie użytkownika: {prompt}\n\nOdpowiedź:"
     try:
         return llm.complete(full_prompt).text
-    except Exception as e:
-        return f"**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne. Szczegóły: {e}"
+    except Exception:
+        # Bez treści wyjątku w odpowiedzi i w logu: mogłaby zawierać adres serwera i fragment promptu
+        logger.error("Błąd połączenia ze standardowym LLM", exc_info=False)
+        return "**Błąd połączenia z Modelem:** Upewnij się, że serwer i adres API są poprawne."

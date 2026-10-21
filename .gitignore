@@ -185,3 +185,6 @@ fabric.properties
 .idea
 # ustawienia lokalne aplikacji
 settings.json
+
+# pytest
+.pytest_cache/

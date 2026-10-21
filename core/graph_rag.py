@@ -87,17 +87,36 @@ _BRAK_RE = re.compile(
 )
 
 
+def _split_lines_sentences(text: str) -> list[list[str]]:
+    # Dzieli tekst na linie, a każdą linię na zdania. Podział na linie jest zachowywany,
+    # żeby po przetwarzaniu końcowym nie znikały listy i akapity (Markdown).
+    return [
+        [s.strip() for s in re.split(r'(?<=[.!?])\s+', line) if s.strip()]
+        for line in text.split('\n')
+    ]
+
+
+def _join_lines_sentences(lines: list[list[str] | None]) -> str:
+    # Odwrotność _split_lines_sentences: zdania w linii łączy spacją, linie znakiem nowej
+    # linii. Pusta lista to pusta linia z oryginału (np. odstęp między akapitami),
+    # a None oznacza linię, z której usunięto wszystkie zdania — ta jest pomijana.
+    return '\n'.join(' '.join(sentences) for sentences in lines if sentences is not None).strip()
+
+
 def _strip_brak_contradiction(text: str) -> str:
     # Usuwa z odpowiedzi zdania typu "Brak informacji o ...", ale tylko wtedy,
     # gdy odpowiedź zawiera też właściwą treść. Model 3B często dopisuje takie zdanie
     # po udzieleniu pełnej odpowiedzi, co jest sprzeczne z resztą tekstu i obniża
     # faithfulness. Jeśli WSZYSTKIE zdania mówią "brak danych", tekst zostaje
     # bez zmian, bo wtedy model faktycznie nie miał danych.
-    parts = re.split(r'(?<=[.!?])\s+|\n', text)
-    real = [p for p in parts if p.strip() and not _BRAK_RE.search(p)]
-    if not real:
+    lines = _split_lines_sentences(text)
+    if not any(not _BRAK_RE.search(s) for sentences in lines for s in sentences):
         return text
-    return ' '.join(p for p in parts if p.strip() and not _BRAK_RE.search(p))
+    filtered = []
+    for sentences in lines:
+        kept = [s for s in sentences if not _BRAK_RE.search(s)]
+        filtered.append(None if sentences and not kept else kept)
+    return _join_lines_sentences(filtered)
 
 
 def _deduplicate_sentences(text: str) -> str:
@@ -105,20 +124,26 @@ def _deduplicate_sentences(text: str) -> str:
     # ten sam akapit kilka razy z drobnymi zmianami. Dwa zdania uznajemy za to samo,
     # gdy mają takie same pierwsze 60 znaków (po usunięciu spacji, bez rozróżniania
     # wielkości liter).
-    # Podziel tekst na zdania po znakach kończących lub nowej linii
-    parts = re.split(r'(?<=[.!?])\s+|\n', text)
     seen: set[str] = set()
-    result: list[str] = []
-    for part in parts:
-        stripped = part.strip()
-        if not stripped:
-            continue
-        # Klucz: pierwsze 60 znaków bez spacji, małe litery — wystarczy do wykrycia duplikatu
-        key = re.sub(r'\s+', '', stripped[:60]).lower()
-        if key and key not in seen:
-            seen.add(key)
-            result.append(stripped)
-    return ' '.join(result)
+    result: list[list[str] | None] = []
+    for sentences in _split_lines_sentences(text):
+        kept = []
+        for sentence in sentences:
+            # Klucz: pierwsze 60 znaków bez spacji, małe litery — wystarczy do wykrycia duplikatu
+            key = re.sub(r'\s+', '', sentence[:60]).lower()
+            if key and key not in seen:
+                seen.add(key)
+                kept.append(sentence)
+        result.append(None if sentences and not kept else kept)
+    return _join_lines_sentences(result)
+
+
+def postprocess_answer(text: str) -> str:
+    # Wspólne przetwarzanie końcowe odpowiedzi dla Graph RAG i Vector RAG:
+    # usunięcie powtórzonych zdań, a potem samosprzecznych zdań "Brak informacji...".
+    # Obie metody muszą używać tej samej funkcji, żeby różniły się wyłącznie
+    # strategią wyszukiwania trójek.
+    return _strip_brak_contradiction(_deduplicate_sentences(text))
 
 
 def _stem5(word: str) -> str:
@@ -268,7 +293,9 @@ def _fetch_entity_neighbors(filtered: list[str], all_triplets: list[str]) -> lis
     try:
         with GraphDatabase.driver(uri, auth=(user, password)) as driver:
             with driver.session(database=db_name) as session:
-                for subj in rare:
+                # sorted(): kolejność iteracji po zbiorze zmienia się między uruchomieniami
+                # Pythona, a limit 10 trójek obejmowałby wtedy za każdym razem inne fakty
+                for subj in sorted(rare):
                     records = session.run(
                         """
                         MATCH (n:Entity {id: $subj})-[r]->(m:Entity)
@@ -330,7 +357,8 @@ def _retrieve_triplets(keywords: list[str]) -> list[str]:
         logger.error("Błąd wyszukiwania trójek w Neo4j", exc_info=False)
         query_failed = True
 
-    result = list(found)
+    # sorted(): stała kolejność trójek w prompcie niezależnie od kolejności iteracji po zbiorze
+    result = sorted(found)
 
     # Wyniku z błędnego zapytania nie zapamiętujemy, inaczej pusta lista zostałaby w cache
     # także po tym, jak Neo4j znów zacznie działać
@@ -428,8 +456,7 @@ def get_graph_rag_response(prompt: str) -> dict[str, str]:
 
     try:
         raw_answer = llm_engine.llm.complete(answer_prompt).text.strip()
-        answer = _deduplicate_sentences(raw_answer)
-        answer = _strip_brak_contradiction(answer)
+        answer = postprocess_answer(raw_answer)
         return {
             "answer": f"**Odpowiedź z Grafu Neo4j**\n\n{answer}",
             "context": context,
