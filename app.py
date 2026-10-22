@@ -28,7 +28,13 @@ from core.llm_engine import (
 )
 from core.graph_rag import get_graph_rag_response, clear_retrieval_cache
 from evaluation.evaluator import score_faithfulness
-from core.graph_builder import extract_text_from_pdf, extract_triplets_with_llm, save_edited_triplets_to_neo4j
+from core.graph_builder import (
+    TRIPLET_COLUMNS,
+    count_incomplete,
+    extract_text_from_pdf,
+    extract_triplets_with_llm,
+    save_edited_triplets_to_neo4j,
+)
 
 st.set_page_config(layout="wide", page_title="GraphRAG vs LLM Chatbot")
 st.title("System Ekspercki: RAG Grafowy")
@@ -354,19 +360,46 @@ with tab2:
             with st.expander("Podgląd tekstu z PDF"):
                 st.write(text_to_process[:1000] + "...")
 
+    # Model i limit odpowiedzi dla ekstrakcji relacji. Większy model (np. skonfigurowany jako sędzia)
+    # daje wyraźnie lepsze trójki, a ekstrakcja jest jednorazowa, więc dłuższy czas nie przeszkadza.
+    extraction_models = {f"Główny model ({st.session_state.get('model_name', '—')})": None}
+    if llm_engine.judge_llm is not None:
+        extraction_models[f"Model sędziego ({st.session_state.get('judge_model_name', '—')})"] = llm_engine.judge_llm
+    col_model, col_tokens = st.columns([2, 1])
+    with col_model:
+        extraction_choice = st.selectbox(
+            "Model do ekstrakcji relacji", list(extraction_models), key="extraction_model",
+            help="Model sędziego jest dostępny po włączeniu oddzielnego sędziego w panelu bocznym.",
+        )
+    with col_tokens:
+        extraction_tokens = st.number_input(
+            "Limit tokenów ekstrakcji", 256, 8192, 2048, step=256, key="extraction_max_tokens",
+            help="Większy limit pozwala wypisać więcej relacji z długiego tekstu.",
+        )
+
     # Wyślij tekst do LLM który wyodrębni relacje w formacie trójek
     if st.button("Znajdź Encje i Relacje", type="primary"):
         if text_to_process.strip() == "":
             st.warning("Brak wprowadzonego tekstu")
         else:
             with st.spinner("LLM analizuje tekst..."):
-                triplets = extract_triplets_with_llm(text_to_process)
+                triplets = extract_triplets_with_llm(text_to_process, model=extraction_models[extraction_choice],
+                                                     max_tokens=int(extraction_tokens))
                 if triplets:
                     # Zapisz do session_state żeby tabela nie znikała przy klikaniu innych elementów
-                    st.session_state.temp_df = pd.DataFrame(triplets)
+                    st.session_state.temp_df = pd.DataFrame(triplets, columns=list(TRIPLET_COLUMNS))
                     st.success(f"Znaleziono {len(triplets)} potencjalnych relacji")
+                    incomplete = count_incomplete(triplets)
+                    if incomplete:
+                        st.warning(f"{incomplete} z {len(triplets)} relacji ma puste pole. Uzupełnij je w tabeli "
+                                   "albo usuń te wiersze – niepełne relacje nie zostaną zapisane w grafie.")
                 else:
                     st.error("Model nie znalazł żadnych relacji w podanym tekście.")
+
+    # Komunikat z ostatniego zapisu – pokazywany po odświeżeniu strony (st.rerun usuwa bieżące komunikaty)
+    if "save_message" in st.session_state:
+        level, message = st.session_state.pop("save_message")
+        (st.warning if level == "warning" else st.success)(message)
 
     # Pokaż edytowalną tabelę trójek — użytkownik może poprawić błędy LLM przed zapisem
     if "temp_df" in st.session_state:
@@ -381,14 +414,20 @@ with tab2:
 
         if st.button("Zapisz zatwierdzone dane"):
             with st.spinner("Aktualizowanie grafowej bazy danych..."):
-                success = save_edited_triplets_to_neo4j(edited_df)
-                if success:
-                    clear_retrieval_cache()  # nowe dane w grafie, więc stare wyniki wyszukiwania są nieaktualne
-                    st.success("Wiedza została poprawnie wprowadzona.")
+                result = save_edited_triplets_to_neo4j(edited_df)
+                if result is None:
+                    st.error("Wystąpił błąd podczas zapisu do bazy.")
+                else:
+                    saved, skipped = result
+                    if saved:
+                        clear_retrieval_cache()  # nowe dane w grafie, więc stare wyniki wyszukiwania są nieaktualne
+                    if skipped:
+                        st.session_state.save_message = (
+                            "warning", f"Zapisano {saved} relacji. Pominięto {skipped} z pustym polem.")
+                    else:
+                        st.session_state.save_message = ("success", f"Zapisano {saved} relacji w grafie wiedzy.")
                     del st.session_state.temp_df
                     st.rerun()
-                else:
-                    st.error("Wystąpił błąd podczas zapisu do bazy.")
 
 
 # --- ZAKŁADKA 3: EWALUACJA SYSTEMU ---

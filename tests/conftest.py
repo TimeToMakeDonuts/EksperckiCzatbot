@@ -31,10 +31,20 @@ class FakeLLM:
     def __init__(self, text: str = "", error: Exception | None = None):
         self.text = text
         self.error = error
+        self.max_tokens = None
         self.prompts: list[str] = []
+        self.used_limits: list = []   # limit tokenów obowiązujący przy każdym wywołaniu
+
+    def model_copy(self, update: dict):
+        # jak pydantic model_copy w LlamaIndex: kopia z nadpisanymi polami, wywołania zapisywane wspólnie
+        copy = FakeLLM(self.text, self.error)
+        copy.prompts, copy.used_limits = self.prompts, self.used_limits
+        copy.max_tokens = update.get("max_tokens", self.max_tokens)
+        return copy
 
     def complete(self, prompt: str):
         self.prompts.append(prompt)
+        self.used_limits.append(self.max_tokens)
         if self.error:
             raise self.error
         return types.SimpleNamespace(text=self.text)
