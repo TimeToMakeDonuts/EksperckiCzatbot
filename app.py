@@ -196,21 +196,24 @@ def get_visual_graph_html(context: str) -> str | None:
     if not lines:
         return None
 
-    net = Network(height="350px", width="100%", bgcolor="#0e1117", font_color="white", directed=True)
-    rendered = 0
-    for line in lines:
-        parts = [p.strip() for p in line.split("|")]
-        if len(parts) == 3:
-            src, rel, tgt = parts
-            net.add_node(src, label=src, title=src, color="#ff4b4b")
-            net.add_node(tgt, label=tgt, title=tgt, color="#4b4bff")
-            net.add_edge(src, tgt, title=rel, label=rel, color="#aaaaaa")
-            rendered += 1
-
-    if rendered == 0:
+    triplets = [parts for parts in ([p.strip() for p in ln.split("|")] for ln in lines) if len(parts) == 3]
+    if not triplets:
         return None
+    # Kolor zależy od roli węzła w całym kontekście, a nie od pierwszego wystąpienia:
+    # czerwony - podmiot co najmniej jednej trójki, niebieski - wyłącznie obiekt (zwykle wartość)
+    subjects = {src for src, _, _ in triplets}
 
-    net.toggle_physics(True)
+    def node_color(node: str) -> str:
+        return "#ff4b4b" if node in subjects else "#4b4bff"
+
+    net = Network(height="350px", width="100%", bgcolor="#0e1117", font_color="white", directed=True)
+    for src, rel, tgt in triplets:
+        net.add_node(src, label=src, title=src, color=node_color(src))
+        net.add_node(tgt, label=tgt, title=tgt, color=node_color(tgt))
+        net.add_edge(src, tgt, title=rel, label=rel, color="#aaaaaa")
+
+    # Dłuższe krawędzie i silniejsze odpychanie - etykiety relacji mniej na siebie nachodzą
+    net.barnes_hut(gravity=-3000, spring_length=110, overlap=1)
     # Zapisz do pliku tymczasowego i odczytaj HTML — PyVis nie obsługuje zwracania stringa bezpośrednio
     tmp_fd, tmp_path = tempfile.mkstemp(suffix=".html")
     os.close(tmp_fd)
@@ -218,7 +221,16 @@ def get_visual_graph_html(context: str) -> str | None:
     with open(tmp_path, "r", encoding="utf-8") as f:
         html = f.read()
     os.unlink(tmp_path)
-    return html
+    # Po ułożeniu grafu fizyka jest wyłączana, żeby przeciągnięty węzeł zostawał tam,
+    # gdzie go upuszczono, zamiast wracać na miejsce wyznaczone przez symulację; widok jest
+    # dopasowywany z marginesem, żeby etykiety skrajnych węzłów nie były ucinane
+    return html.replace(
+        "network = new vis.Network(container, data, options);",
+        "network = new vis.Network(container, data, options);\n"
+        "network.once('stabilizationIterationsDone', function () { network.setOptions({physics: false}); network.fit(); "
+        "network.moveTo({scale: network.getScale() * 0.85}); });",
+        1,
+    )
 
 
 # --- INICJALIZACJA STANU SESJI ---
@@ -467,16 +479,24 @@ with tab3:
                     st.error("Nie udało się połączyć z bazą Neo4j. Sprawdź ustawienia URI i hasła w panelu bocznym.")
 
     with col_vec:
-        idx_status = "✅ Gotowy" if is_index_built() else "⚠️ Niezbudowany"
-        st.markdown(f"Indeks wektorowy: **{idx_status}**")
+        # Status w miejscu zarezerwowanym przed przyciskiem: Streamlit rysuje stronę od góry,
+        # więc bez tego po zbudowaniu indeksu nadal widać "Niezbudowany" aż do kolejnego odświeżenia
+        idx_status_slot = st.empty()
+
+        def show_index_status():
+            idx_status = "✅ Gotowy" if is_index_built() else "⚠️ Niezbudowany"
+            idx_status_slot.markdown(f"Indeks wektorowy: **{idx_status}**")
+
+        show_index_status()
         st.markdown("Wymagany do Vector RAG.")
         if st.button("🔢 Zbuduj indeks wektorowy", key="build_vec_idx"):
             with st.spinner("Obliczanie embeddingów trójek z Neo4j..."):
                 ok, n = build_vector_index()
-                if ok:
-                    st.success(f"Zindeksowano {n} trójek.")
-                else:
-                    st.error("Nie udało się zbudować indeksu. Sprawdź połączenie z Neo4j.")
+            show_index_status()
+            if ok:
+                st.success(f"Zindeksowano {n} trójek.")
+            else:
+                st.error("Nie udało się zbudować indeksu. Sprawdź połączenie z Neo4j.")
 
     with col_seed_info:
         with st.expander("Podgląd trójek testowych"):
